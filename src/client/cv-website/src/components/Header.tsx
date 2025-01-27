@@ -2,6 +2,7 @@ import React from 'react';
 import { Avatar, Typography, Box, Grid, Paper } from '@mui/material';
 import { styled } from '@mui/system';
 import ProfilePhoto from '../shared/img/profile-photo.jpg'; // Replace with the actual path to your profile photo
+import { AnimatedNeonTitle } from '../controls/title';
 
 const HeaderPaper = styled(Paper)(({ theme }) => ({
   padding: theme.spacing(3),
@@ -19,7 +20,7 @@ const ContactInfo = styled(Box)(({ theme }) => ({
   marginTop: theme.spacing(2),
   '& a': {
     textDecoration: 'none',
-    color: theme.palette.primary.main,
+    color: theme.palette.primary,
   },
 }));
 
@@ -27,9 +28,9 @@ const Header: React.FC = () => {
   return (
     <HeaderPaper elevation={3}>
       <AvatarStyled alt="Andrei Zubrytski" src={ProfilePhoto} />
-      <Typography variant="h4" component="h1" gutterBottom>
+      <AnimatedNeonTitle variant="h4" gutterBottom>
         Andrei Zubrytski
-      </Typography>
+      </AnimatedNeonTitle>
       <Typography variant="h6" component="h2" color="textSecondary" gutterBottom>
         Senior .NET Engineer
       </Typography>
