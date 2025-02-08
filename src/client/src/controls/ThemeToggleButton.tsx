@@ -20,7 +20,10 @@ const ThemeToggleButton: React.FC<ThemeToggleButtonProps> = ({
       color="primary"
       aria-label="toggle theme"
       sx={{
-        // Default neon/console styling (optional)
+        position: 'absolute',
+        top: '2.5rem',
+        right: '2.5rem',
+        zIndex: 1000, // Ensure it's above other elements
         boxShadow: isDarkMode
           ? '0 0 5px #0ff, inset 0 0 5px #0ff'
           : 'none',
@@ -31,8 +34,7 @@ const ThemeToggleButton: React.FC<ThemeToggleButtonProps> = ({
             ? '0 0 10px #0ff, inset 0 0 10px #0ff'
             : '0 0 5px rgba(0,0,0,0.3)',
         },
-        // Merge any additional sx props passed in
-        ...sx,
+        ...sx, // Allow additional styles if needed
       }}
     >
       {isDarkMode ? <LightModeIcon /> : <DarkModeIcon />}

@@ -5,6 +5,9 @@ $dark-bg: #121212;
 $dark-paper: #1e1e1e;
 $dark-primary: #0ff; // Neon cyan
 $dark-secondary: #ff4081; // Neon pink (for accents)
+$dark-text: #0ff;
+$dark-back-bg: #0ff;
+$dark-back-text: #1e1e1e;
 $dark-text-primary: #ffffff;
 $dark-text-secondary: #b0bec5;
 $dark-gradient: linear-gradient(135deg, #0ff 0%, #0066ff 100%);
@@ -17,6 +20,9 @@ $light-bg: #f5f5f5;
 $light-paper: #ffffff;
 $light-primary: #1976d2;
 $light-secondary: #ff4081;
+$light-text: #333;
+$light-back-bg: #1976d2;
+$light-back-text: #ffffff;  
 $light-text-primary: #212121;
 $light-text-secondary: #757575;
 $light-gradient: linear-gradient(135deg, #1976d2 0%, #64b5f6 100%);

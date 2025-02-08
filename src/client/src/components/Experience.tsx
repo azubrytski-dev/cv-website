@@ -1,13 +1,14 @@
 import React from 'react';
 import { Typography, Box, Grid, Paper } from '@mui/material';
 import { styled } from '@mui/system';
+import FlipCard from './shared/FlipCard';
 
 const experiences = [
   {
     company: "Intetics",
     role: "Senior Software Engineer / Team Lead",
     duration: "October 2021 - Present",
-    description: "Led a team of 10 developers. Developed architecture and design. Automated tasks and improved billing processes for healthcare projects.",
+    description: "Team Size: 10 developers. Developed architecture and design. Healthcare:.",
     techStack: ".NET Core, React, CouchDB, RabbitMQ, MSSQL, AWS"
   },
   {
@@ -58,14 +59,11 @@ const Experience: React.FC = () => {
       <Typography variant="h5" gutterBottom>Professional Experience</Typography>
       <Grid container spacing={2}>
         {experiences.map((exp, index) => (
-          <Grid item xs={12} key={index}>
-            <ExperiencePaper elevation={3}>
-              <Typography variant="h6">{exp.company}</Typography>
-              <Typography variant="subtitle1" color="textSecondary">{exp.role}</Typography>
-              <Typography variant="body2" color="textSecondary">{exp.duration}</Typography>
-              <Typography variant="body1" paragraph>{exp.description}</Typography>
-              <Typography variant="body2"><strong>Tech Stack:</strong> {exp.techStack}</Typography>
-            </ExperiencePaper>
+          <Grid item md={12} key={index}>
+            <FlipCard
+              frontText={`${exp.company} - ${exp.role}`}
+              backText={`${exp.description}\n\nTech Stack: ${exp.techStack}`}
+            />
           </Grid>
         ))}
       </Grid>

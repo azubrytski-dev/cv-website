@@ -84,7 +84,7 @@ export const lightTheme = createTheme({
     },
   },
   typography: {
-    fontFamily: 'Poppins, Arial, sans-serif',
+    fontFamily: 'Poppins, Consolas, "Courier New", monospace',
     h1: {
       fontSize: '2.8rem',
       fontWeight: 700,

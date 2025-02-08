@@ -1,6 +1,6 @@
 import React from 'react';
 import { darkTheme, lightTheme } from './themes/themes';
-import { Button, Container, CssBaseline, ThemeProvider } from '@mui/material';
+import { Box, Button, Container, CssBaseline, ThemeProvider } from '@mui/material';
 import Header from './components/Header';
 import About from './components/About';
 import Skills from './components/Skills';
@@ -8,6 +8,7 @@ import Experience from './components/Experience';
 import Education from './components/Education';
 import Projects from './components/Projects';
 import ThemeToggleButton from './controls/ThemeToggleButton';
+import PortfolioGrid from './components/PortfolioGrid';
 
 const App: React.FC = () => {
     // State to track which theme is active
@@ -27,14 +28,20 @@ const App: React.FC = () => {
       
       <Container sx={{ textAlign: 'center', py: 4 }}>
         {/* Button to switch themes */}
-        <ThemeToggleButton isDarkMode={isDarkMode} onToggleTheme={handleThemeToggle}/>
-
-        <Header />
+        <Box sx={{ position: 'relative', minHeight: '100vh' }}>
+          {/* Theme Toggle Button at Top Right */}
+          <ThemeToggleButton
+            isDarkMode={isDarkMode}
+            onToggleTheme={() => setIsDarkMode(!isDarkMode)}
+          />
+          <PortfolioGrid />
+        </Box>
+        {/* <Header />
         <About />
         <Skills />
         <Experience />
         <Education />
-        <Projects />
+        <Projects /> */}
       </Container>
     </ThemeProvider>
   );

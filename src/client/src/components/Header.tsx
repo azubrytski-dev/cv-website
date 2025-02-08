@@ -7,7 +7,7 @@ import { AnimatedNeonTitle } from '../controls/Title';
 const HeaderPaper = styled(Paper)(({ theme }) => ({
   padding: theme.spacing(3),
   marginBottom: theme.spacing(4),
-  textAlign: 'center',
+  textAlign: 'left',
 }));
 
 const AvatarStyled = styled(Avatar)(({ theme }) => ({
