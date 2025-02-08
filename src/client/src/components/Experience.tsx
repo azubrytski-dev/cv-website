@@ -51,19 +51,26 @@ const experiences = [
 const ExperiencePaper = styled(Paper)(({ theme }) => ({
   padding: theme.spacing(2),
   margin: theme.spacing(2, 0),
+  width: '100%',
+  display: 'flex',          // Enable flexbox
+  justifyContent: 'center', // Center FlipCard horizontally
+  alignItems: 'center',     // Center FlipCard vertically
+  minHeight: '250px',       // Ensure enough height for centering
 }));
 
 const Experience: React.FC = () => {
   return (
     <Box sx={{ padding: '20px 0' }}>
       <Typography variant="h5" gutterBottom>Professional Experience</Typography>
-      <Grid container spacing={2}>
+      <Grid container spacing={2} sx={{ width: '100%', justifyContent: 'center' }}>
         {experiences.map((exp, index) => (
-          <Grid item md={12} key={index}>
-            <FlipCard
-              frontText={`${exp.company} - ${exp.role}`}
-              backText={`${exp.description}\n\nTech Stack: ${exp.techStack}`}
-            />
+          <Grid item xs={12} md={4} key={index}>
+            <ExperiencePaper elevation={3}>
+              <FlipCard
+                frontText={`${exp.company} - ${exp.role}`}
+                backText={`${exp.description}\n\nTech Stack: ${exp.techStack}`}
+              />
+            </ExperiencePaper>
           </Grid>
         ))}
       </Grid>

@@ -24,17 +24,17 @@ const PortfolioGrid: React.FC = () => {
                 </Box>
             </Grid2>
 
-            {/* Education Section */}
-            <Grid2 container size={{ xs: 12, sm: 12, md: 12 }}>
-                <Box sx={getBoxStyle(theme)}>
-                    <Education />
-                </Box>
-            </Grid2>
-
             {/* Experience Section */}
             <Grid2 container size={{ xs: 12, sm: 12, md: 12 }}>
                 <Box sx={getBoxStyle(theme)}>
                     <Experience />
+                </Box>
+            </Grid2>
+
+            {/* Education Section */}
+            <Grid2 container size={{ xs: 12, sm: 12, md: 12 }}>
+                <Box sx={getBoxStyle(theme)}>
+                    <Education />
                 </Box>
             </Grid2>
         </Grid2>
@@ -47,6 +47,7 @@ const getBoxStyle = (theme: any) => ({
     background: theme.palette.mode === 'dark' ? '#1e1e1e' : '#ffffff',
     color: theme.palette.mode === 'dark' ? '#0ff' : '#333',
     padding: '20px',
+    width: '100%',
     borderRadius: '12px',
     textAlign: 'center',
     boxShadow:
@@ -54,12 +55,5 @@ const getBoxStyle = (theme: any) => ({
             ? '0px 0px 20px rgba(0, 255, 255, 0.2)'
             : '0px 0px 10px rgba(0, 0, 0, 0.1)',
 });
-
-const sectionHeaderStyle = {
-    textAlign: 'center',
-    marginBottom: '20px',
-    color: '#0ff',
-    textTransform: 'uppercase',
-};
 
 export default PortfolioGrid;

@@ -20,9 +20,9 @@ const EducationPaper = styled(Paper)(({ theme }) => ({
 
 const Education: React.FC = () => {
   return (
-    <Box sx={{ padding: '20px 0' }}>
+    <Box sx={{ padding: '20px 0', width: '100%' }}>
       <Typography variant="h5" gutterBottom>Education</Typography>
-      <Grid container spacing={2}>
+      <Grid container spacing={2} sx={{ width: '100%', justifyContent: 'center' }}>
         {educationData.map((edu, index) => (
           <Grid item xs={12} key={index}>
             <EducationPaper elevation={3}>

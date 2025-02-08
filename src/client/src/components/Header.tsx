@@ -8,6 +8,7 @@ const HeaderPaper = styled(Paper)(({ theme }) => ({
   padding: theme.spacing(3),
   marginBottom: theme.spacing(4),
   textAlign: 'left',
+  width: '100%',
 }));
 
 const AvatarStyled = styled(Avatar)(({ theme }) => ({
