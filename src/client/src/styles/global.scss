@@ -1,0 +1,66 @@
+// src/styles/global.scss
+@import 'variables';
+
+body {
+  font-family: $font-primary;
+  transition: background-color 0.3s ease-in-out;
+}
+
+// Dark Theme Styles
+.dark-theme {
+  background-color: $dark-bg;
+  color: $dark-text-primary;
+}
+
+// Light Theme Styles
+.light-theme {
+  background-color: $light-bg;
+  color: $light-text-primary;
+}
+
+// Button Styles
+.button {
+  text-transform: uppercase;
+  border-radius: 8px;
+  padding: 10px 20px;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+// Dark Theme Button
+.dark-button {
+  background: $dark-gradient;
+  box-shadow: $dark-button-shadow;
+
+  &:hover {
+    box-shadow: $dark-hover-shadow;
+  }
+}
+
+// Light Theme Button
+.light-button {
+  background: $light-gradient;
+  box-shadow: $light-button-shadow;
+
+  &:hover {
+    box-shadow: $light-hover-shadow;
+  }
+}
+
+// Card Styles
+.card {
+  border-radius: 12px;
+  padding: 16px;
+}
+
+// Dark Theme Card
+.dark-card {
+  background-color: $dark-paper;
+  box-shadow: $dark-card-shadow;
+}
+
+// Light Theme Card
+.light-card {
+  background-color: $light-paper;
+  box-shadow: $light-card-shadow;
+}
