@@ -29,9 +29,9 @@ const Header: React.FC = () => {
   return (
     <HeaderPaper elevation={3}>
       <AvatarStyled alt="Andrei Zubrytski" src={ProfilePhoto} />
-      <AnimatedNeonTitle variant="h4" gutterBottom>
+      <Typography variant="h4" gutterBottom>
         Andrei Zubrytski
-      </AnimatedNeonTitle>
+      </Typography>
       <Typography variant="h6" component="h2" color="textSecondary" gutterBottom>
         Senior .NET Engineer
       </Typography>

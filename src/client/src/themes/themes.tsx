@@ -1,129 +1,155 @@
 import { createTheme } from '@mui/material/styles';
-import '../styles/global.scss'; // Import SCSS styles
+import '../styles/global.scss'; // Import SCSS variables
 
-// Dark Theme
+// Helper function to fetch CSS variables from SCSS safely
+const getCSSVariable = (property: string): string => {
+  if (typeof window !== 'undefined') {
+    return window.getComputedStyle(document.documentElement).getPropertyValue(property).trim();
+  }
+  return ''; // Fallback if window is not available
+};
+
 export const darkTheme = createTheme({
   palette: {
     mode: 'dark',
-    primary: { main: '#0ff' },
-    secondary: { main: '#ff4081' },
+    primary: { main: getCSSVariable('--dark-primary') },
+    secondary: { main: getCSSVariable('--dark-secondary') },
     background: {
-      default: '#121212',
-      paper: '#1e1e1e',
+      default: getCSSVariable('--dark-bg'),
+      paper: getCSSVariable('--dark-paper'),
     },
     text: {
-      primary: '#ffffff',
-      secondary: '#b0bec5',
+      primary: getCSSVariable('--dark-text-primary'),
+      secondary: getCSSVariable('--dark-text-secondary'),
     },
   },
   typography: {
-    fontFamily: 'Poppins, Consolas, "Courier New", monospace',
+    fontFamily: getCSSVariable('--font-primary'),
     h1: {
       fontSize: '3rem',
       fontWeight: 700,
-      color: '#0ff',
+      color: getCSSVariable('--dark-primary'),
       textTransform: 'uppercase',
-      textShadow: '0 0 10px #0ff',
+      textShadow: getCSSVariable('--dark-hover-shadow'),
     },
     h2: {
+      color: getCSSVariable('--dark-secondary'),
+      textShadow: getCSSVariable('--dark-hover-shadow'),
+    },
+    h5: {
       fontSize: '2.2rem',
-      fontWeight: 600,
-      color: '#ff4081',
-      textShadow: '0 0 10px #ff4081',
+      fontWeight: 400,
+      color: getCSSVariable('--dark-text'),
+      textShadow: getCSSVariable('--dark-hover-shadow'),
     },
     body1: {
-      fontSize: '1rem',
-      color: '#b0bec5',
+      fontSize: '1.2rem',
+      color: getCSSVariable('--dark-text-secondary'),
     },
   },
   components: {
-    MuiButton: {
+    MuiTypography: {
       styleOverrides: {
         root: {
-          color: '#0ff',
-          textTransform: 'uppercase',
-          borderRadius: '8px',
-          padding: '10px 20px',
-          fontWeight: 'bold',
-          transition: '0.3s',
-          background: 'linear-gradient(135deg, #0ff 0%, #0066ff 100%)',
-          boxShadow: '0 0 15px #0ff',
-          '&:hover': {
-            background: 'linear-gradient(135deg, #0066ff 0%, #0ff 100%)',
-            boxShadow: '0 0 20px #0ff',
+          '& a': {
+            color: getCSSVariable('--dark-text-primary'),
+            textDecoration: 'none',
+            transition: 'color 0.3s ease-in-out',
+            '&:hover': {
+              opacity: 0.8,
+            },
           },
         },
       },
     },
-    MuiCard: {
+    MuiButton: {
       styleOverrides: {
         root: {
-          backgroundColor: '#1e1e1e',
-          borderRadius: '12px',
-          boxShadow: '0px 0px 20px rgba(0, 255, 255, 0.2)',
-          padding: '16px',
+          color: getCSSVariable('--dark-primary'),
+          textTransform: 'uppercase',
+          borderRadius: '0.625rem',
+          padding: '0.75rem 1.5rem',
+          fontWeight: 'bold',
+          transition: '0.3s',
+          background: getCSSVariable('--dark-gradient'),
+          boxShadow: getCSSVariable('--dark-button-shadow'),
+          '&:hover': {
+            background: getCSSVariable('--dark-gradient'),
+            boxShadow: getCSSVariable('--dark-hover-shadow'),
+            transform: 'scale(1.05)',
+          },
         },
       },
     },
   },
 });
 
-// Light Theme
 export const lightTheme = createTheme({
   palette: {
     mode: 'light',
-    primary: { main: '#1976d2' },
-    secondary: { main: '#ff4081' },
+    primary: { main: getCSSVariable('--light-primary') },
+    secondary: { main: getCSSVariable('--light-secondary') },
     background: {
-      default: '#f5f5f5',
-      paper: '#ffffff',
+      default: getCSSVariable('--light-bg'),
+      paper: getCSSVariable('--light-paper'),
     },
     text: {
-      primary: '#212121',
-      secondary: '#757575',
+      primary: getCSSVariable('--light-text-primary'),
+      secondary: getCSSVariable('--light-text-secondary'),
     },
   },
   typography: {
-    fontFamily: 'Poppins, Consolas, "Courier New", monospace',
+    fontFamily: getCSSVariable('--font-primary'),
     h1: {
       fontSize: '2.8rem',
       fontWeight: 700,
-      color: '#212121',
+      color: getCSSVariable('--light-text-primary'),
     },
     h2: {
       fontSize: '2rem',
       fontWeight: 600,
-      color: '#1976d2',
+      color: getCSSVariable('--light-primary'),
+    },
+    h5: {
+      fontSize: '2.2rem',
+      fontWeight: 400,
+      color: getCSSVariable('--light-primary'),
     },
     body1: {
-      fontSize: '1rem',
-      color: '#424242',
+      fontSize: '1.2rem',
+      color: getCSSVariable('--light-text-secondary'),
     },
   },
   components: {
-    MuiButton: {
+    MuiTypography: {
       styleOverrides: {
         root: {
-          color: '#ffffff',
-          textTransform: 'uppercase',
-          borderRadius: '8px',
-          padding: '10px 20px',
-          fontWeight: 'bold',
-          transition: '0.3s',
-          background: 'linear-gradient(135deg, #1976d2 0%, #64b5f6 100%)',
-          '&:hover': {
-            background: 'linear-gradient(135deg, #64b5f6 0%, #1976d2 100%)',
+          '& a': {
+            color: getCSSVariable('--light-text-primary'),
+            textDecoration: 'none',
+            transition: 'color 0.3s ease-in-out',
+            '&:hover': {
+              opacity: 0.8,
+            },
           },
         },
       },
     },
-    MuiCard: {
+    MuiButton: {
       styleOverrides: {
         root: {
-          backgroundColor: '#ffffff',
-          borderRadius: '12px',
-          boxShadow: '0px 0px 20px rgba(0, 0, 0, 0.1)',
-          padding: '16px',
+          color: getCSSVariable('--light-text-primary'),
+          textTransform: 'uppercase',
+          borderRadius: '0.625rem',
+          padding: '0.75rem 1.5rem',
+          fontWeight: 'bold',
+          transition: '0.3s',
+          background: getCSSVariable('--light-gradient'),
+          '&:hover': {
+            background: getCSSVariable('--light-gradient'),
+            boxShadow: getCSSVariable('--light-hover-shadow'),
+            transform: 'scale(1.05)',
+          },
         },
       },
     },
