@@ -31,7 +31,7 @@ const Header: React.FC = () => {
       <AvatarStyled
         alt="Andrei Zubrytski"
         src={ProfilePhoto} />
-      <Typography variant="h4" gutterBottom>
+      <Typography variant="h5" gutterBottom>
         Andrei Zubrytski
       </Typography>
       <Typography variant="h6" component="h2" color="textSecondary" gutterBottom>

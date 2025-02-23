@@ -6,10 +6,12 @@ const educationData = [
   {
     institution: "Belarusian State University of Informatics and Radioelectronics",
     degree: "Bachelor’s in Computer Science",
+    specialization: "Software Engineering",
   },
   {
-    institution: "Belarusian State University of Informatics and Radioelectronics",
+    institution: "Belarusian National Technical University",
     degree: "Bachelor’s and Master’s in Engineering",
+    specialization: "Hydraulic Engineering and Scientific Research",
   },
 ];
 
@@ -28,6 +30,7 @@ const Education: React.FC = () => {
             <EducationPaper elevation={3}>
               <Typography variant="h6">{edu.institution}</Typography>
               <Typography variant="body1">{edu.degree}</Typography>
+              <Typography variant="body2">{edu.specialization}</Typography>
             </EducationPaper>
           </Grid>
         ))}
