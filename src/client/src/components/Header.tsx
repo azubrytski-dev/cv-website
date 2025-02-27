@@ -2,7 +2,7 @@ import React from 'react';
 import { Avatar, Typography, Box, Grid, Paper } from '@mui/material';
 import { styled } from '@mui/system';
 import ProfilePhoto from '../shared/img/profile-photo.jpeg'; // Replace with the actual path to your profile photo
-import { AnimatedNeonTitle } from '../controls/Title';
+import { AnimatedNeonTitle } from './controls/Title';
 
 const HeaderPaper = styled(Paper)(({ theme }) => ({
   padding: theme.spacing(3),

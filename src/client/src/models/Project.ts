@@ -8,7 +8,7 @@ export interface Project {
     endDate: string;
 }
 
-export const projects: Project[] = [
+export const projectDataMock: Project[] = [
     {
         name: "Health Care/Mass Medicine",
         role: "Senior Software Engineer / Team Lead",

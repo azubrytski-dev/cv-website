@@ -7,7 +7,7 @@ export interface Experience {
     techStack: string;
 }
 
-export const experiences: Experience[] = [
+export const experienceDataMock: Experience[] = [
     {
         company: "Tipalti",
         role: "Senior Software Engineer / Team Lead",

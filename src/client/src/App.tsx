@@ -7,7 +7,7 @@ import Skills from './components/Skills';
 import Experience from './components/Experience';
 import Education from './components/Education';
 import Projects from './components/Projects';
-import ThemeToggleButton from './controls/ThemeToggleButton';
+import ThemeToggleButton from './components/controls/ThemeToggleButton';
 import PortfolioGrid from './components/PortfolioGrid';
 
 const App: React.FC = () => {
