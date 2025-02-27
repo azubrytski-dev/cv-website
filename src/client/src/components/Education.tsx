@@ -1,32 +1,28 @@
-import React from 'react';
-import { Typography, Box, Paper, Grid } from '@mui/material';
-import { styled } from '@mui/system';
-
-const educationData = [
-  {
-    institution: "Belarusian State University of Informatics and Radioelectronics",
-    degree: "Bachelor's in Computer Science",
-    specialization: "Software Engineering",
-    graduatedYear: 2016,
-  },
-  {
-    institution: "Belarusian National Technical University",
-    degree: "Bachelor's and Master's in Engineering",
-    specialization: "Hydraulic Engineering and Scientific Research",
-    graduatedYear: 2014,
-  },
-];
+import React, { useEffect, useState } from "react";
+import { Typography, Box, Paper, Grid } from "@mui/material";
+import { styled } from "@mui/system";
+import { Education as EducationModel } from "../models/Education";
+import { getEducationInformation } from "../services/portfolio.service";
 
 const EducationPaper = styled(Paper)(({ theme }) => ({
-  padding: theme.spacing(2),
-  margin: theme.spacing(2, 0),
+  padding: "1rem",
+  margin: "1rem 0",
+  borderRadius: "0.75rem",
 }));
 
 const Education: React.FC = () => {
+  const [educationData, setEducationData] = useState<EducationModel[]>([]);
+
+  useEffect(() => {
+    setEducationData(getEducationInformation());
+  }, []);
+
+  if (!educationData.length) return <Typography>Loading...</Typography>;
+
   return (
-    <Box sx={{ padding: '20px 0', width: '100%' }}>
+    <Box sx={{ padding: "2rem 0", width: "100%" }}>
       <Typography variant="h5" gutterBottom>Education</Typography>
-      <Grid container spacing={2} sx={{ width: '100%', justifyContent: 'center' }}>
+      <Grid container spacing={2} sx={{ width: "100%", justifyContent: "center" }}>
         {educationData.map((edu, index) => (
           <Grid item xs={12} key={index}>
             <EducationPaper elevation={3}>
@@ -39,6 +35,6 @@ const Education: React.FC = () => {
       </Grid>
     </Box>
   );
-}
+};
 
 export default Education;

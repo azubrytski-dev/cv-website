@@ -1,74 +1,43 @@
-import React from 'react';
-import { Typography, Box, Grid, Paper } from '@mui/material';
-import { styled } from '@mui/system';
-import FlipCard from './shared/FlipCard';
-
-const experiences = [
-  {
-    company: "Intetics",
-    role: "Senior Software Engineer / Team Lead",
-    duration: "October 2021 - Present",
-    description: "Team Size: 10 developers. Developed architecture and design. Healthcare:.",
-    techStack: ".NET Core, React, CouchDB, RabbitMQ, MSSQL, AWS"
-  },
-  {
-    company: "Aras",
-    role: "System Architect",
-    duration: "April 2020 - October 2021",
-    description: "Optimized solutions based on non-functional requirements. Led development teams and mentored developers.",
-    techStack: "REST/SOAP, .NET, MS SQL, Azure DevOps"
-  },
-  {
-    company: "Aras",
-    role: "Senior Software Engineer (.NET)",
-    duration: "April 2019 - April 2020",
-    description: "Customized platform solutions. Integrated third-party services.",
-    techStack: "REST/SOAP, .NET, MS SQL, Azure DevOps"
-  },
-  {
-    company: "Disprz",
-    role: ".NET Developer/Team Lead",
-    duration: "February 2019 - April 2019",
-    description: "Developed MVP chat bot for bank employee onboarding.",
-    techStack: "C#, ASP.NET Core, Azure"
-  },
-  {
-    company: "Andersen Labs",
-    role: ".NET Developer/Team Lead",
-    duration: "June 2017 - April 2019",
-    description: "Developed E-Commerce platform services. Planned and led migrations.",
-    techStack: "C#, ASP.NET MVC, React, Dapper"
-  },
-  {
-    company: "Andersen Labs",
-    role: "Junior .NET Developer",
-    duration: "December 2016 - June 2017",
-    description: "Developed vehicle insurance system.",
-    techStack: "C#, ASP.NET MVC, JavaScript"
-  }
-];
+import React, { useEffect, useState } from "react";
+import { Typography, Box, Grid, Paper } from "@mui/material";
+import { styled } from "@mui/system";
+import FlipCard from "./shared/FlipCard";
+import { Experience as ExperienceModel } from "../models/Experience";
+import { getExperienceInformation } from "../services/portfolio.service";
+import { calculateDuration } from "../utils/string.utils";
 
 const ExperiencePaper = styled(Paper)(({ theme }) => ({
-  padding: theme.spacing(2),
-  margin: theme.spacing(2, 0),
-  width: '100%',
-  display: 'flex', 
-  justifyContent: 'center',
-  alignItems: 'center',
-  minHeight: '250px',
+  padding: "1rem",
+  margin: "1rem 0",
+  width: "100%",
+  display: "flex",
+  justifyContent: "center",
+  alignItems: "center",
+  minHeight: "15.625rem",
+  borderRadius: "0.75rem",
 }));
 
 const Experience: React.FC = () => {
+  const [experiences, setExperiences] = useState<ExperienceModel[]>([]);
+
+  useEffect(() => {
+    setExperiences(getExperienceInformation());
+  }, []);
+
+  if (!experiences.length) return <Typography>Loading...</Typography>;
+
   return (
-    <Box sx={{ padding: '20px 0' }}>
-      <Typography variant="h5" gutterBottom>Professional Experience</Typography>
-      <Grid container spacing={2} sx={{ width: '100%', justifyContent: 'center' }}>
+    <Box sx={{ padding: "2rem 0", width: "100%" }}>
+      <Typography variant="h5" gutterBottom>
+        Professional Experience
+      </Typography>
+      <Grid container spacing={2} sx={{ width: "100%", justifyContent: "center" }}>
         {experiences.map((exp, index) => (
           <Grid item xs={12} md={4} key={index}>
             <ExperiencePaper elevation={3}>
               <FlipCard
                 frontText={`${exp.company} - ${exp.role}`}
-                backText={`${exp.description}\n\nTech Stack: ${exp.techStack}`}
+                backText={`${exp.description}\n\nTech Stack: ${exp.techStack}\nDuration: ${calculateDuration(exp.startDate, exp.endDate)}`}
               />
             </ExperiencePaper>
           </Grid>
@@ -76,6 +45,6 @@ const Experience: React.FC = () => {
       </Grid>
     </Box>
   );
-}
+};
 
 export default Experience;

@@ -1,63 +1,74 @@
-import React from 'react';
-import { Avatar, Typography, Box, Grid, Paper } from '@mui/material';
-import { styled } from '@mui/system';
-import ProfilePhoto from '../shared/img/profile-photo.jpeg';
+import React, { useEffect, useState } from "react";
+import { Avatar, Typography, Box, Paper, IconButton, Stack } from "@mui/material";
+import { styled } from "@mui/system";
+import { Contact } from "../models/Contact";
+import { getContactInfodmation } from "../services/portfolio.service";
+import PhoneIcon from "@mui/icons-material/Phone";
+import EmailIcon from "@mui/icons-material/Email";
+import GitHubIcon from "@mui/icons-material/GitHub";
+import LocationOnIcon from "@mui/icons-material/LocationOn";
+import LinkedInIcon from "@mui/icons-material/LinkedIn";
 
 const HeaderPaper = styled(Paper)(({ theme }) => ({
-  padding: theme.spacing(3),
-  marginBottom: theme.spacing(4),
-  textAlign: 'left',
-  width: '100%',
+  padding: "1.5rem",
+  textAlign: "center",
+  width: "100%",
+  borderRadius: "0.75rem",
 }));
 
 const AvatarStyled = styled(Avatar)(({ theme }) => ({
-  width: theme.spacing(18),
-  height: theme.spacing(18),
-  margin: 'auto',
+  width: "7rem",
+  height: "7rem",
+  margin: "auto",
 }));
 
-const ContactInfo = styled(Box)(({ theme }) => ({
-  marginTop: theme.spacing(2),
-  '& a': {
-    textDecoration: 'none',
-    color: theme.palette.primary,
-  },
+const IconContainer = styled(Stack)(({ theme }) => ({
+  marginTop: "1rem",
+  display: "flex",
+  justifyContent: "center",
+  gap: "1rem",
 }));
 
 const Header: React.FC = () => {
+  const [contact, setContact] = useState<Contact | null>(null);
+
+  useEffect(() => {
+    setContact(getContactInfodmation());
+  }, []);
+
+  if (!contact) return <Typography>Loading...</Typography>;
+
   return (
     <HeaderPaper elevation={3}>
-      <AvatarStyled
-        alt="Andrei Zubrytski"
-        src={ProfilePhoto} />
+      <AvatarStyled alt={contact.name} src={contact.avatar} />
       <Typography variant="h5" gutterBottom>
-        Andrei Zubrytski
+        {contact.name}
       </Typography>
       <Typography variant="h6" component="h2" color="textSecondary" gutterBottom>
-        Senior .NET Engineer
+        {contact.title}
       </Typography>
-      <ContactInfo>
-        <Typography variant="body1">
-          <strong>Birthdate:</strong> 30.11.1991
-        </Typography>
-        <Typography variant="body1">
-          <strong>Location:</strong> Tbilisi, Georgia
-        </Typography>
-        <Typography variant="body1">
-          <strong>Phone:</strong> <a href="tel:+995591141320">+995 591 141 320</a>
-        </Typography>
-        <Typography variant="body1">
-          <strong>Skype:</strong> live:azubrytski.dev
-        </Typography>
-        <Typography variant="body1">
-          <strong>Email:</strong> <a href="mailto:azubrytski.dev@gmail.com">azubrytski.dev@gmail.com</a>
-        </Typography>
-        <Typography variant="body1">
-          <strong>GitHub:</strong> <a href="https://github.com/azubrytski-dev" target="_blank" rel="noopener noreferrer">azubrytski-dev</a>
-        </Typography>
-      </ContactInfo>
+
+      <Typography variant="body2" sx={{ display: "flex", justifyContent: "center", alignItems: "center", gap: "0.5rem" }}>
+        <LocationOnIcon fontSize="small" /> {contact.location}
+      </Typography>
+
+      {/* Icons for Contact Links */}
+      <IconContainer direction="row">
+        <IconButton component="a" href={`tel:${contact.phone}`} color="primary">
+          <PhoneIcon />
+        </IconButton>
+        <IconButton component="a" href={`mailto:${contact.email}`} color="primary">
+          <EmailIcon />
+        </IconButton>
+        <IconButton component="a" href={contact.github} target="_blank" rel="noopener noreferrer" color="primary">
+          <GitHubIcon />
+        </IconButton>
+        <IconButton component="a" href={contact.linkedin} target="_blank" rel="noopener noreferrer" color="primary">
+          <LinkedInIcon />
+        </IconButton>
+      </IconContainer>
     </HeaderPaper>
   );
-}
+};
 
 export default Header;

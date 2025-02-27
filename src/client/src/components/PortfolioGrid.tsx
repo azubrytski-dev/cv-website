@@ -1,6 +1,5 @@
 import React from 'react';
-import { Box, Typography, Grid2, useTheme } from '@mui/material';
-import FlipCard from './shared/FlipCard';
+import { Box, Grid2, useTheme } from '@mui/material';
 import About from './About';
 import Experience from './Experience';
 import Education from './Education';
@@ -43,16 +42,16 @@ const PortfolioGrid: React.FC = () => {
 
 
 const getBoxStyle = (theme: any) => ({
-    background: theme.palette.mode === 'dark' ? '#1e1e1e' : '#ffffff',
-    color: theme.palette.mode === 'dark' ? '#0ff' : '#333',
-    padding: '20px',
-    width: '100%',
-    borderRadius: '12px',
-    textAlign: 'center',
+    background: theme.palette.background.paper,
+    color: theme.palette.text.primary,
+    padding: "1.25rem",
+    width: "100%",
+    borderRadius: "0.75rem",
+    textAlign: "center",
     boxShadow:
-        theme.palette.mode === 'dark'
-            ? '0px 0px 20px rgba(0, 255, 255, 0.2)'
-            : '0px 0px 10px rgba(0, 0, 0, 0.1)',
+        theme.palette.mode === "dark"
+            ? "0rem 0rem 1.25rem #00ffff33"
+            : "0rem 0rem 0.625rem rgba(0, 0, 0, 0.1)",
 });
 
 export default PortfolioGrid;
