@@ -23,7 +23,7 @@ const ThemeToggleButton: React.FC<ThemeToggleButtonProps> = ({
         position: 'absolute',
         top: '2.5rem',
         right: '2.5rem',
-        zIndex: 1000, // Ensure it's above other elements
+        zIndex: 1000,
         boxShadow: isDarkMode
           ? '0 0 5px #0ff, inset 0 0 5px #0ff'
           : 'none',
@@ -34,7 +34,7 @@ const ThemeToggleButton: React.FC<ThemeToggleButtonProps> = ({
             ? '0 0 10px #0ff, inset 0 0 10px #0ff'
             : '0 0 5px rgba(0,0,0,0.3)',
         },
-        ...sx, // Allow additional styles if needed
+        ...sx,
       }}
     >
       {isDarkMode ? <LightModeIcon /> : <DarkModeIcon />}

@@ -52,10 +52,10 @@ const ExperiencePaper = styled(Paper)(({ theme }) => ({
   padding: theme.spacing(2),
   margin: theme.spacing(2, 0),
   width: '100%',
-  display: 'flex',          // Enable flexbox
-  justifyContent: 'center', // Center FlipCard horizontally
-  alignItems: 'center',     // Center FlipCard vertically
-  minHeight: '250px',       // Ensure enough height for centering
+  display: 'flex', 
+  justifyContent: 'center',
+  alignItems: 'center',
+  minHeight: '250px',
 }));
 
 const Experience: React.FC = () => {

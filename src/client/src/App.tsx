@@ -11,13 +11,10 @@ import ThemeToggleButton from './components/controls/ThemeToggleButton';
 import PortfolioGrid from './components/PortfolioGrid';
 
 const App: React.FC = () => {
-    // State to track which theme is active
     const [isDarkMode, setIsDarkMode] = React.useState(true);
 
-    // Decide which theme to use based on the state
     const currentTheme = isDarkMode ? darkTheme : lightTheme;
   
-    // Toggle between dark and light themes
     const handleThemeToggle = () => {
       setIsDarkMode((prev) => !prev);
     };
@@ -27,21 +24,13 @@ const App: React.FC = () => {
       <CssBaseline />
       
       <Container sx={{ textAlign: 'center', py: 4 }}>
-        {/* Button to switch themes */}
         <Box sx={{ position: 'relative', minHeight: '100vh' }}>
-          {/* Theme Toggle Button at Top Right */}
           <ThemeToggleButton
             isDarkMode={isDarkMode}
             onToggleTheme={() => setIsDarkMode(!isDarkMode)}
           />
           <PortfolioGrid />
         </Box>
-        {/* <Header />
-        <About />
-        <Skills />
-        <Experience />
-        <Education />
-        <Projects /> */}
       </Container>
     </ThemeProvider>
   );

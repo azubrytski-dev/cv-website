@@ -42,7 +42,6 @@ const PortfolioGrid: React.FC = () => {
 };
 
 
-// Function to dynamically set Box styles based on the theme
 const getBoxStyle = (theme: any) => ({
     background: theme.palette.mode === 'dark' ? '#1e1e1e' : '#ffffff',
     color: theme.palette.mode === 'dark' ? '#0ff' : '#333',

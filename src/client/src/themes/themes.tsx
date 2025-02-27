@@ -1,12 +1,11 @@
 import { createTheme } from '@mui/material/styles';
-import '../styles/global.scss'; // Import SCSS variables
+import '../styles/global.scss';
 
-// Helper function to fetch CSS variables from SCSS safely
 const getCSSVariable = (property: string): string => {
   if (typeof window !== 'undefined') {
     return window.getComputedStyle(document.documentElement).getPropertyValue(property).trim();
   }
-  return ''; // Fallback if window is not available
+  return '';
 };
 
 export const darkTheme = createTheme({

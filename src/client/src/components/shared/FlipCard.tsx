@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Box, Typography, useTheme, useMediaQuery } from '@mui/material';
 import { Flipper, Flipped } from 'react-flip-toolkit';
-import '../../styles/FlipCard.scss'; // Import SCSS
+import '../../styles/FlipCard.scss';
 
 interface FlipCardProps {
   frontText: string;
@@ -18,9 +18,9 @@ const FlipCard: React.FC<FlipCardProps> = ({ frontText, backText }) => {
       <Box
         className={`flip-card ${theme.palette.mode}`}
         sx={{
-          width: isSmallScreen ? '100%' : '15.625rem', // 250px → 15.625rem
-          height: '9.375rem', // 150px → 9.375rem
-          margin: isSmallScreen ? 'auto' : '0', // Center on small screens
+          width: isSmallScreen ? '100%' : '15.625rem',
+          height: '9.375rem',
+          margin: isSmallScreen ? 'auto' : '0',
         }}
         onClick={() => setFlipped(!flipped)}
       >
