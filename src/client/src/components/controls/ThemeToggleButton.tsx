@@ -21,8 +21,8 @@ const ThemeToggleButton: React.FC<ThemeToggleButtonProps> = ({
       aria-label="toggle theme"
       sx={{
         position: 'absolute',
-        top: '2.5rem',
-        right: '2.5rem',
+        top: '3rem',
+        right: '3rem',
         zIndex: 1000,
         boxShadow: isDarkMode
           ? '0 0 5px #0ff, inset 0 0 5px #0ff'
