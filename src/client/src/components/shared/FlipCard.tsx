@@ -18,7 +18,7 @@ const FlipCard: React.FC<FlipCardProps> = ({ frontText, backText }) => {
       <Box
         className={`flip-card ${theme.palette.mode}`}
         sx={{
-          width: isSmallScreen ? '100%' : '15.625rem',
+          width: isSmallScreen ? '16rem' : '15.625rem',
           height: '9.375rem',
           margin: isSmallScreen ? 'auto' : '0',
         }}
