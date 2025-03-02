@@ -2,10 +2,10 @@ export interface Technology {
     name: string;
     title: string;
     description: string;
-    rate?: 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10;
+    rate: 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10;
 }
 
-export const technologies: Technology[] = [
+export const technologiesDataMock: Technology[] = [
     { name: "dotnercore", title: ".NET Core", description: "A cross-platform, high-performance framework for building modern, cloud-based, Internet-connected applications.", rate: 8 },
     { name: "react", title: "React", description: "A JavaScript library for building user interfaces.", rate: 7 },
     { name: "mongodb", title: "MongoDB", description: "A document database with the scalability and flexibility that you want with the querying and indexing that you need.", rate: 7 },

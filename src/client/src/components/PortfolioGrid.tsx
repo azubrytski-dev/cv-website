@@ -4,6 +4,7 @@ import About from './About';
 import Experience from './Experience';
 import Education from './Education';
 import Header from './Header';
+import Skills from './Skills';
 
 const PortfolioGrid: React.FC = () => {
     const theme = useTheme();
@@ -20,6 +21,13 @@ const PortfolioGrid: React.FC = () => {
             <Grid2 container size={{ xs: 12, sm: 6, md: 6 }}>
                 <Box sx={getBoxStyle(theme)}>
                     <About />
+                </Box>
+            </Grid2>
+
+            {/* Experience Section */}
+            <Grid2 container size={{ xs: 12, sm: 12, md: 12 }}>
+                <Box sx={getBoxStyle(theme)}>
+                    <Skills />
                 </Box>
             </Grid2>
 

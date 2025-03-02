@@ -1,42 +1,37 @@
-import React from 'react';
-import { Typography, Box, List, ListItem, ListItemText } from '@mui/material';
+import React, { useEffect, useState } from "react";
+import { Typography, Box, Grid } from "@mui/material";
+import { Technology } from "../models/Technology";
+import { getTechnologiesInformation } from "../services/portfolio.service";
+import SkillItem from "./shared/SkillItem";
 
 const Skills: React.FC = () => {
+  const [skills, setSkills] = useState<Technology[]>([]);
+
+  useEffect(() => {
+    setSkills(getTechnologiesInformation());
+  }, []);
+
+  if (!skills.length) return <Typography>Loading...</Typography>;
+
   return (
-    <Box sx={{ padding: '20px 0' }}>
-      <Typography variant="h5">Skills</Typography>
-      <Typography variant="h6">Hard Skills</Typography>
-      <List>
-        {[
-          "Software Architecture and Design",
-          "Project Estimation and Technical Documentation",
-          "Test-Driven Development (TDD) and Domain-Driven Design (DDD)",
-          "Development Best Practices: OOP, SOLID, KISS, DRY",
-          "Agile Methodologies: Scrum, Kanban",
-          "Technical Interviewing"
-        ].map(skill => (
-          <ListItem key={skill}>
-            <ListItemText primary={skill} />
-          </ListItem>
+    <Box sx={{ padding: "2rem 0", width: "100%" }}>
+      <Typography variant="h5" gutterBottom>
+        Skills & Technologies
+      </Typography>
+      <Grid container spacing={2} sx={{ justifyContent: "center" }}>
+        {skills.map((tech, index) => (
+          <Grid item xs={12} sm={6} md={4} key={index}>
+            <SkillItem
+              name={tech.name}
+              title={tech.title}
+              description={tech.description}
+              rate={tech.rate}
+            />
+          </Grid>
         ))}
-      </List>
-      <Typography variant="h6">Soft Skills</Typography>
-      <List>
-        {[
-          "Leadership and Mentoring",
-          "Effective Communication",
-          "Self-Organization",
-          "Risk Assessment",
-          "Delegation",
-          "Presentation Skills"
-        ].map(skill => (
-          <ListItem key={skill}>
-            <ListItemText primary={skill} />
-          </ListItem>
-        ))}
-      </List>
+      </Grid>
     </Box>
   );
-}
+};
 
 export default Skills;
