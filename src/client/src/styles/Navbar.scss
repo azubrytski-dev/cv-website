@@ -1,0 +1,111 @@
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background-color: var(--nav-bg);
+  padding: 0 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid var(--nav-border);
+  transition: transform 0.3s ease-in-out, background-color 0.3s ease-in-out, border-bottom-color 0.3s ease-in-out;
+
+  &.navbar--hidden {
+    transform: translateY(-100%);
+  }
+
+  .navbar-left {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .navbar-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--nav-text-primary);
+  }
+
+  .nav-links {
+    display: flex;
+    align-items: center;
+
+    @media (max-width: 768px) {
+      display: none; // This will be controlled by JS
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      background-color: var(--nav-bg);
+      flex-direction: column;
+      padding: 1rem 0;
+      border-bottom: 1px solid var(--nav-border);
+
+      &.active {
+        display: flex;
+      }
+    }
+  }
+
+  .nav-link {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 1rem 1.5rem;
+    color: var(--nav-text-secondary);
+    text-decoration: none;
+    position: relative;
+    transition: color 0.3s ease-in-out;
+
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: 0.5rem;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 0;
+      height: 2px;
+      background-color: var(--nav-text-secondary);
+      transition: width 0.3s ease-in-out;
+    }
+
+    &:hover {
+      color: var(--nav-text-primary);
+    }
+
+    &:hover::after {
+      width: calc(100% - 3rem);
+    }
+
+    &.active {
+      color: var(--nav-text-primary);
+      font-weight: bold;
+
+      &::after {
+        width: calc(100% - 3rem);
+        background-color: var(--nav-text-primary);
+      }
+    }
+  }
+
+  .hamburger-menu {
+    display: none;
+    cursor: pointer;
+    background: none;
+    border: none;
+    padding: 0.5rem;
+
+    @media (max-width: 768px) {
+      display: block;
+    }
+
+    .bar {
+      display: block;
+      width: 25px;
+      height: 3px;
+      margin: 5px auto;
+      background-color: var(--nav-text-primary);
+      transition: all 0.3s ease-in-out;
+    }
+  }
+} 

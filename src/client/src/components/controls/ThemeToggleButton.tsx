@@ -1,28 +1,24 @@
 import React from 'react';
-import { IconButton, SxProps, Theme } from '@mui/material';
+import { IconButton } from '@mui/material';
 import DarkModeIcon from '@mui/icons-material/DarkMode';
 import LightModeIcon from '@mui/icons-material/LightMode';
 
 interface ThemeToggleButtonProps {
   isDarkMode: boolean;
   onToggleTheme: () => void;
-  sx?: SxProps<Theme>;
 }
 
 const ThemeToggleButton: React.FC<ThemeToggleButtonProps> = ({
   isDarkMode,
   onToggleTheme,
-  sx,
 }) => {
   return (
     <IconButton
       onClick={onToggleTheme}
       color="primary"
       aria-label="toggle theme"
+      className="theme-toggle-button" 
       sx={{
-        position: 'absolute',
-        top: '3rem',
-        right: '3rem',
         zIndex: 1000,
         boxShadow: isDarkMode
           ? '0 0 5px #0ff, inset 0 0 5px #0ff'
@@ -34,7 +30,6 @@ const ThemeToggleButton: React.FC<ThemeToggleButtonProps> = ({
             ? '0 0 10px #0ff, inset 0 0 10px #0ff'
             : '0 0 5px rgba(0,0,0,0.3)',
         },
-        ...sx,
       }}
     >
       {isDarkMode ? <LightModeIcon /> : <DarkModeIcon />}

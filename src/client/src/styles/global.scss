@@ -8,11 +8,21 @@ body {
 .dark-theme {
   background-color: var(--dark-bg);
   color: var(--dark-text-primary);
+
+  --nav-bg: var(--dark-bg);
+  --nav-border: var(--dark-paper);
+  --nav-text-primary: var(--dark-text-primary);
+  --nav-text-secondary: var(--dark-text-secondary);
 }
 
 .light-theme {
   background-color: var(--light-bg);
   color: var(--light-text-primary);
+
+  --nav-bg: var(--light-bg);
+  --nav-border: var(--light-paper);
+  --nav-text-primary: var(--light-text-primary);
+  --nav-text-secondary: var(--light-text-secondary);
 }
 
 .button {
