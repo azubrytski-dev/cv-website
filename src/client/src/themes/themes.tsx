@@ -3,6 +3,7 @@ import { createTheme } from '@mui/material/styles';
 const darkPalette = {
   primary: '#00ff99',
   secondary: '#ff4081',
+  link: '#33ffb1',
   bg: '#121212',
   paper: '#1e1e1e',
   textPrimary: '#e8e8e8',
@@ -17,6 +18,7 @@ const darkPalette = {
 const lightPalette = {
   primary: '#1976d2',
   secondary: '#ff4081',
+  link: '#4aa3ff',
   bg: '#f5f5f5',
   paper: '#ffffff',
   textPrimary: '#212121',
@@ -69,11 +71,11 @@ export const darkTheme = createTheme({
       styleOverrides: {
         root: {
           '& a': {
-            color: darkPalette.textPrimary,
+            color: darkPalette.link,
             textDecoration: 'none',
             transition: 'color 0.3s ease-in-out',
             '&:hover': {
-              opacity: 0.8,
+              color: darkPalette.primary,
             },
           },
         },
@@ -142,11 +144,11 @@ export const lightTheme = createTheme({
       styleOverrides: {
         root: {
           '& a': {
-            color: lightPalette.textPrimary,
+            color: lightPalette.link,
             textDecoration: 'none',
             transition: 'color 0.3s ease-in-out',
             '&:hover': {
-              opacity: 0.8,
+              color: lightPalette.primary,
             },
           },
         },
