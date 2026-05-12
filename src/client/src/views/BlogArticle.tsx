@@ -1,0 +1,117 @@
+'use client';
+
+import Link from 'next/link';
+import ArrowBackIcon from '@mui/icons-material/ArrowBack';
+import { Box, IconButton, Paper, Stack, useTheme } from '@mui/material';
+
+import { renderMarkdown } from '../lib/markdown';
+import type { BlogPost } from '../models/Post';
+import { getGlassSurfaceStyles } from '../styles/glass.styles';
+
+interface BlogArticleProps {
+  post: BlogPost;
+}
+
+function stripLeadingHeading(markdown: string) {
+  const lines = markdown.replace(/\r\n/g, '\n').split('\n');
+  const firstContentIndex = lines.findIndex((line) => line.trim().length > 0);
+
+  if (firstContentIndex === -1) {
+    return markdown;
+  }
+
+  if (!/^#\s+/.test(lines[firstContentIndex])) {
+    return markdown;
+  }
+
+  const remainingLines = [...lines];
+  remainingLines.splice(firstContentIndex, 1);
+  return remainingLines.join('\n').trim();
+}
+
+export default function BlogArticle({ post }: BlogArticleProps) {
+  const theme = useTheme();
+  const isDark = theme.palette.mode === 'dark';
+  const glassSurface = getGlassSurfaceStyles(theme, isDark ? '0 255 153' : '25 118 210');
+  const articleBody = stripLeadingHeading(post.content);
+
+  return (
+    <Box
+      sx={{
+        px: { xs: 2, md: 4 },
+        py: { xs: 4, md: 6 },
+        background: isDark
+          ? 'radial-gradient(circle at top right, rgba(0, 255, 153, 0.10), transparent 32%), linear-gradient(180deg, rgba(255,255,255,0.02), transparent 30%)'
+          : 'radial-gradient(circle at top right, rgba(59,130,246,0.14), transparent 32%), linear-gradient(180deg, rgba(15,23,42,0.03), transparent 30%)',
+      }}
+    >
+      <Stack spacing={2.5} sx={{ maxWidth: 980, alignItems: 'flex-start' }}>
+        <IconButton
+          component={Link}
+          href="/blog"
+          aria-label="Back to blog"
+          sx={{
+            width: 40,
+            height: 40,
+            borderRadius: 2.5,
+            border: '1px solid',
+            borderColor: isDark ? 'rgba(0, 255, 153, 0.18)' : 'rgba(25, 118, 210, 0.16)',
+            backgroundColor: 'transparent',
+            color: isDark ? 'rgb(0, 255, 153)' : 'primary.main',
+            transition: 'transform 180ms ease, background-color 180ms ease, border-color 180ms ease',
+            '&:hover': {
+              backgroundColor: isDark ? 'rgba(0, 255, 153, 0.08)' : 'rgba(25, 118, 210, 0.06)',
+              borderColor: isDark ? 'rgba(0, 255, 153, 0.28)' : 'rgba(25, 118, 210, 0.24)',
+              transform: 'translateY(-1px)',
+            },
+          }}
+        >
+          <ArrowBackIcon />
+        </IconButton>
+
+        <Box sx={{ width: '100%', textAlign: 'left' }}>
+          <Box
+            component="h1"
+            sx={{
+              margin: 0,
+              fontSize: { xs: '2.25rem', md: '3.5rem' },
+              lineHeight: 1.05,
+              letterSpacing: '-0.05em',
+              fontWeight: 850,
+              color: 'text.primary',
+            }}
+          >
+            {post.topic}
+          </Box>
+        </Box>
+
+        <Paper
+          elevation={0}
+          sx={{
+            width: '100%',
+            p: { xs: 2.5, md: 3.5 },
+            borderRadius: 4,
+            textAlign: 'left',
+            ...glassSurface,
+          }}
+        >
+          <Box
+            sx={{
+              '& p, & li, & h1, & h2, & h3, & blockquote, & pre': {
+                color: 'inherit',
+              },
+              '& h1:first-of-type': {
+                marginTop: 0,
+              },
+            '& pre, & blockquote': {
+              maxWidth: '100%',
+            },
+          }}
+        >
+            {renderMarkdown(articleBody, { mode: theme.palette.mode })}
+          </Box>
+        </Paper>
+      </Stack>
+    </Box>
+  );
+}
