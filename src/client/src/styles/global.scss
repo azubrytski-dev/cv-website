@@ -8,6 +8,8 @@ body {
 .dark-theme {
   background-color: var(--dark-bg);
   color: var(--dark-text-primary);
+  background-image: radial-gradient(circle at top, rgba(0, 255, 255, 0.12), transparent 30%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.02), transparent 45%);
 
   --nav-bg: var(--dark-bg);
   --nav-border: var(--dark-paper);
@@ -18,6 +20,8 @@ body {
 .light-theme {
   background-color: var(--light-bg);
   color: var(--light-text-primary);
+  background-image: radial-gradient(circle at top, rgba(25, 118, 210, 0.08), transparent 28%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.34), transparent 45%);
 
   --nav-bg: var(--light-bg);
   --nav-border: var(--light-paper);

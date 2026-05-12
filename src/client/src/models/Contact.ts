@@ -16,7 +16,7 @@ export interface Contact {
 export const contactDataMock: Contact = {
     name: "Andrei Zubrytski",
     title: "Senior Software Engineer",
-    avatar: profilePhoto,
+    avatar: profilePhoto.src,
     birthdate: "30.11.1991",
     location: "Tbilisi, Georgia",
     phone: "+995 591 141 320",

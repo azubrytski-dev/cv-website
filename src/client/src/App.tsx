@@ -3,7 +3,8 @@ import { darkTheme, lightTheme } from './themes/themes';
 import { Box, Container, CssBaseline, ThemeProvider } from '@mui/material';
 import { Route, Routes } from 'react-router-dom';
 import Navbar from './components/Navbar';
-import AboutMe from './pages/AboutMe';
+import AboutMe from './views/AboutMe';
+import Beats from './views/Beats';
 
 const App: React.FC = () => {
     const [isDarkMode, setIsDarkMode] = React.useState(true);
@@ -23,6 +24,7 @@ const App: React.FC = () => {
           <Box sx={{ position: 'relative', minHeight: '100vh' }}>
             <Routes>
               <Route path="/" element={<AboutMe />} />
+              <Route path="/beats" element={<Beats />} />
             </Routes>
           </Box>
         </Container>

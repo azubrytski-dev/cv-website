@@ -2,9 +2,7 @@ import React from 'react';
 import PortfolioGrid from '../components/PortfolioGrid';
 
 const AboutMe: React.FC = () => {
-  return (
-    <PortfolioGrid />
-  );
+  return <PortfolioGrid />;
 };
 
-export default AboutMe; 
+export default AboutMe;

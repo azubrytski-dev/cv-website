@@ -1,49 +1,67 @@
 import { createTheme } from '@mui/material/styles';
-import '../styles/global.scss';
 
-const getCSSVariable = (property: string): string => {
-  if (typeof window !== 'undefined') {
-    return window.getComputedStyle(document.documentElement).getPropertyValue(property).trim();
-  }
-  return '';
+const darkPalette = {
+  primary: '#00ff99',
+  secondary: '#ff4081',
+  bg: '#121212',
+  paper: '#1e1e1e',
+  textPrimary: '#e8e8e8',
+  textSecondary: '#b0bec5',
+  text: '#00ff99',
+  gradient: 'linear-gradient(135deg, #00ff99 0%, #00ff99 100%)',
+  buttonShadow: '0 0 0.9375rem #00ff99',
+  hoverShadow: '0 0 1.25rem #00ff99',
+  fontFamily: 'Poppins, Arial, sans-serif',
+};
+
+const lightPalette = {
+  primary: '#1976d2',
+  secondary: '#ff4081',
+  bg: '#f5f5f5',
+  paper: '#ffffff',
+  textPrimary: '#212121',
+  textSecondary: '#757575',
+  gradient: 'linear-gradient(135deg, #1976d2 0%, #64b5f6 100%)',
+  hoverShadow: '0 0 0.625rem #1976d2',
+  fontFamily: 'Poppins, Arial, sans-serif',
 };
 
 export const darkTheme = createTheme({
   palette: {
     mode: 'dark',
-    primary: { main: getCSSVariable('--dark-primary') },
-    secondary: { main: getCSSVariable('--dark-secondary') },
+    primary: { main: darkPalette.primary },
+    secondary: { main: darkPalette.secondary },
     background: {
-      default: getCSSVariable('--dark-bg'),
-      paper: getCSSVariable('--dark-paper'),
+      default: darkPalette.bg,
+      paper: darkPalette.paper,
     },
     text: {
-      primary: getCSSVariable('--dark-text-primary'),
-      secondary: getCSSVariable('--dark-text-secondary'),
+      primary: darkPalette.textPrimary,
+      secondary: darkPalette.textSecondary,
     },
   },
   typography: {
-    fontFamily: getCSSVariable('--font-primary'),
+    fontFamily: darkPalette.fontFamily,
     h1: {
       fontSize: '3rem',
       fontWeight: 700,
-      color: getCSSVariable('--dark-primary'),
+      color: darkPalette.primary,
       textTransform: 'uppercase',
-      textShadow: getCSSVariable('--dark-hover-shadow'),
+      textShadow: darkPalette.hoverShadow,
     },
     h2: {
-      color: getCSSVariable('--dark-secondary'),
-      textShadow: getCSSVariable('--dark-hover-shadow'),
+      color: darkPalette.secondary,
+      textShadow: darkPalette.hoverShadow,
     },
     h5: {
       fontSize: '2.2rem',
       fontWeight: 400,
-      color: getCSSVariable('--dark-text'),
-      textShadow: getCSSVariable('--dark-hover-shadow'),
+      color: darkPalette.text,
+      textShadow: darkPalette.hoverShadow,
     },
     body1: {
       fontSize: '1.2rem',
-      color: getCSSVariable('--dark-text-secondary'),
+      color: darkPalette.textSecondary,
     },
   },
   components: {
@@ -51,7 +69,7 @@ export const darkTheme = createTheme({
       styleOverrides: {
         root: {
           '& a': {
-            color: getCSSVariable('--dark-text-primary'),
+            color: darkPalette.textPrimary,
             textDecoration: 'none',
             transition: 'color 0.3s ease-in-out',
             '&:hover': {
@@ -64,17 +82,17 @@ export const darkTheme = createTheme({
     MuiButton: {
       styleOverrides: {
         root: {
-          color: getCSSVariable('--dark-primary'),
+          color: darkPalette.primary,
           textTransform: 'uppercase',
           borderRadius: '0.625rem',
           padding: '0.75rem 1.5rem',
           fontWeight: 'bold',
           transition: '0.3s',
-          background: getCSSVariable('--dark-gradient'),
-          boxShadow: getCSSVariable('--dark-button-shadow'),
+          background: darkPalette.gradient,
+          boxShadow: darkPalette.buttonShadow,
           '&:hover': {
-            background: getCSSVariable('--dark-gradient'),
-            boxShadow: getCSSVariable('--dark-hover-shadow'),
+            background: darkPalette.gradient,
+            boxShadow: darkPalette.hoverShadow,
             transform: 'scale(1.05)',
           },
         },
@@ -86,37 +104,37 @@ export const darkTheme = createTheme({
 export const lightTheme = createTheme({
   palette: {
     mode: 'light',
-    primary: { main: getCSSVariable('--light-primary') },
-    secondary: { main: getCSSVariable('--light-secondary') },
+    primary: { main: lightPalette.primary },
+    secondary: { main: lightPalette.secondary },
     background: {
-      default: getCSSVariable('--light-bg'),
-      paper: getCSSVariable('--light-paper'),
+      default: lightPalette.bg,
+      paper: lightPalette.paper,
     },
     text: {
-      primary: getCSSVariable('--light-text-primary'),
-      secondary: getCSSVariable('--light-text-secondary'),
+      primary: lightPalette.textPrimary,
+      secondary: lightPalette.textSecondary,
     },
   },
   typography: {
-    fontFamily: getCSSVariable('--font-primary'),
+    fontFamily: lightPalette.fontFamily,
     h1: {
       fontSize: '2.8rem',
       fontWeight: 700,
-      color: getCSSVariable('--light-text-primary'),
+      color: lightPalette.textPrimary,
     },
     h2: {
       fontSize: '2rem',
       fontWeight: 600,
-      color: getCSSVariable('--light-primary'),
+      color: lightPalette.primary,
     },
     h5: {
       fontSize: '2.2rem',
       fontWeight: 400,
-      color: getCSSVariable('--light-primary'),
+      color: lightPalette.primary,
     },
     body1: {
       fontSize: '1.2rem',
-      color: getCSSVariable('--light-text-secondary'),
+      color: lightPalette.textSecondary,
     },
   },
   components: {
@@ -124,7 +142,7 @@ export const lightTheme = createTheme({
       styleOverrides: {
         root: {
           '& a': {
-            color: getCSSVariable('--light-text-primary'),
+            color: lightPalette.textPrimary,
             textDecoration: 'none',
             transition: 'color 0.3s ease-in-out',
             '&:hover': {
@@ -137,16 +155,16 @@ export const lightTheme = createTheme({
     MuiButton: {
       styleOverrides: {
         root: {
-          color: getCSSVariable('--light-text-primary'),
+          color: lightPalette.textPrimary,
           textTransform: 'uppercase',
           borderRadius: '0.625rem',
           padding: '0.75rem 1.5rem',
           fontWeight: 'bold',
           transition: '0.3s',
-          background: getCSSVariable('--light-gradient'),
+          background: lightPalette.gradient,
           '&:hover': {
-            background: getCSSVariable('--light-gradient'),
-            boxShadow: getCSSVariable('--light-hover-shadow'),
+            background: lightPalette.gradient,
+            boxShadow: lightPalette.hoverShadow,
             transform: 'scale(1.05)',
           },
         },
