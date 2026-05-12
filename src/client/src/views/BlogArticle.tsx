@@ -45,51 +45,69 @@ export default function BlogArticle({ post }: BlogArticleProps) {
           : 'radial-gradient(circle at top right, rgba(59,130,246,0.14), transparent 32%), linear-gradient(180deg, rgba(15,23,42,0.03), transparent 30%)',
       }}
     >
-      <Stack spacing={2.5} sx={{ maxWidth: 980, alignItems: 'flex-start' }}>
-        <IconButton
-          component={Link}
-          href="/blog"
-          aria-label="Back to blog"
-          sx={{
-            width: 40,
-            height: 40,
-            borderRadius: 2.5,
-            border: '1px solid',
-            borderColor: isDark ? 'rgba(0, 255, 153, 0.18)' : 'rgba(25, 118, 210, 0.16)',
-            backgroundColor: 'transparent',
-            color: isDark ? 'rgb(0, 255, 153)' : 'primary.main',
-            transition: 'transform 180ms ease, background-color 180ms ease, border-color 180ms ease',
-            '&:hover': {
-              backgroundColor: isDark ? 'rgba(0, 255, 153, 0.08)' : 'rgba(25, 118, 210, 0.06)',
-              borderColor: isDark ? 'rgba(0, 255, 153, 0.28)' : 'rgba(25, 118, 210, 0.24)',
-              transform: 'translateY(-1px)',
-            },
-          }}
-        >
-          <ArrowBackIcon />
-        </IconButton>
-
-        <Box sx={{ width: '100%', textAlign: 'left' }}>
-          <Box
-            component="h1"
+      <Stack spacing={2.25} sx={{ maxWidth: 980, width: '100%', alignItems: 'flex-start' }}>
+        <Stack direction="row" spacing={1.5} sx={{ width: '100%', alignItems: 'center' }}>
+          <IconButton
+            component={Link}
+            href="/blog"
+            aria-label="Back to blog"
             sx={{
-              margin: 0,
-              fontSize: { xs: '2.25rem', md: '3.5rem' },
-              lineHeight: 1.05,
-              letterSpacing: '-0.05em',
-              fontWeight: 850,
-              color: 'text.primary',
+              width: 56,
+              height: 56,
+              flexShrink: 0,
+              borderRadius: 3,
+              border: '1px solid',
+              borderColor: isDark ? 'rgba(0, 255, 153, 0.18)' : 'rgba(25, 118, 210, 0.16)',
+              backgroundColor: 'transparent',
+              color: isDark ? 'rgb(0, 255, 153)' : 'primary.main',
+              transition: 'transform 180ms ease, background-color 180ms ease, border-color 180ms ease',
+              '&:hover': {
+                backgroundColor: isDark ? 'rgba(0, 255, 153, 0.08)' : 'rgba(25, 118, 210, 0.06)',
+                borderColor: isDark ? 'rgba(0, 255, 153, 0.28)' : 'rgba(25, 118, 210, 0.24)',
+                transform: 'translateY(-1px)',
+              },
             }}
           >
-            {post.topic}
+            <ArrowBackIcon />
+          </IconButton>
+          <Box
+            sx={{
+              flex: 1,
+              minWidth: 0,
+              px: { xs: 2, md: 3 },
+              height: 56,
+              borderRadius: 3,
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              ...getGlassSurfaceStyles(theme, isDark ? '0 255 153' : '25 118 210'),
+            }}
+          >
+            <Box
+              component="h1"
+              sx={{
+                margin: 0,
+                width: '100%',
+                fontSize: { xs: '1.45rem', md: '2rem' },
+                lineHeight: 1,
+                letterSpacing: '-0.04em',
+                fontWeight: 800,
+                color: 'text.primary',
+                overflow: 'hidden',
+                textOverflow: 'ellipsis',
+                whiteSpace: 'nowrap',
+              }}
+            >
+              {post.topic}
+            </Box>
           </Box>
-        </Box>
+        </Stack>
 
         <Paper
           elevation={0}
           sx={{
             width: '100%',
-            p: { xs: 2.5, md: 3.5 },
+            p: { xs: 2.5, md: 3.75 },
             borderRadius: 4,
             textAlign: 'left',
             ...glassSurface,
@@ -103,11 +121,11 @@ export default function BlogArticle({ post }: BlogArticleProps) {
               '& h1:first-of-type': {
                 marginTop: 0,
               },
-            '& pre, & blockquote': {
-              maxWidth: '100%',
-            },
-          }}
-        >
+              '& pre, & blockquote': {
+                maxWidth: '100%',
+              },
+            }}
+          >
             {renderMarkdown(articleBody, { mode: theme.palette.mode })}
           </Box>
         </Paper>

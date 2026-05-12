@@ -1,183 +1,239 @@
-# CV Website - Project Architecture Analysis
+# CV Website - Project Architecture
 
-## Common Information
+## Overview
 
-### Project Overview
-- **Project Name**: CV Website
-- **Version**: 0.1.0
-- **Type**: Single Page Application (SPA)
-- **Purpose**: Personal portfolio/CV website showcasing professional experience, skills, and projects
-- **Architecture**: Frontend-only React application with modern web technologies
+- **Project**: CV Website
+- **Version**: `0.1.0`
+- **Type**: Next.js frontend application
+- **Purpose**: Personal portfolio and blog site for Andrei Zubrytski
+- **Architecture**: App Router-based React application with server-rendered routes and client-side interactivity
 
-### Technology Stack
-- **Core Framework**: React 19.0.0 with TypeScript 4.9.5
-- **Build Tool**: Create React App (CRA) with react-scripts 5.0.1
-- **Package Manager**: npm
+## Technology Stack
+
+- **Framework**: Next.js `15.5.18`
+- **UI**: React `19.0.0`
 - **Language**: TypeScript with strict mode enabled
-- **Routing**: React Router DOM 7.6.2
-- **Testing**: Jest with React Testing Library
+- **Styling**: Material UI `6.4.1`, Emotion, SCSS
+- **Routing**: Next.js App Router
+- **Build**: Next.js build pipeline
+- **Testing**: Jest and React Testing Library
 
-### Development Environment
-- **Node.js**: Compatible with modern Node.js versions
-- **Browsers**: Production targets >0.2% market share, development targets latest Chrome/Firefox/Safari
-- **Linting**: ESLint with React app configuration
-- **Type Checking**: TypeScript with strict mode
+## Application Structure
 
-## Frontend Architecture
+The application lives in `src/client/src` and is organized by responsibility:
 
-### Component Architecture
-
-#### Directory Structure
-```
+```text
 src/
-├── components/           # Reusable UI components
-│   ├── controls/        # Control components (buttons, toggles)
-│   ├── shared/          # Shared components (cards, skill items)
-│   ├── About.tsx        # About section component
-│   ├── Education.tsx    # Education section component
-│   ├── Experience.tsx   # Experience section component
-│   ├── Header.tsx       # Header component
-│   ├── Navbar.tsx       # Navigation component
-│   ├── PortfolioGrid.tsx # Portfolio grid component
-│   ├── Projects.tsx     # Projects section component
-│   └── Skills.tsx       # Skills section component
-├── pages/               # Page-level components
-│   ├── AboutMe.tsx      # Main about page
-│   └── Blog.tsx         # Blog page (placeholder)
-├── models/              # TypeScript interfaces and data models
-├── services/            # API and data services
-├── styles/              # SCSS stylesheets
-├── themes/              # Material-UI theme configurations
-├── types/               # TypeScript type definitions
-├── utils/               # Utility functions
-└── shared/              # Shared assets (images, etc.)
+├── app/                 # App Router entry points and route layouts
+├── components/          # Reusable UI sections and widgets
+├── lib/                 # Blog content loading and markdown rendering helpers
+├── models/              # TypeScript models and mock data
+├── services/            # Data access helpers for portfolio sections
+├── styles/              # Shared styling helpers and SCSS files
+├── themes/              # Light and dark MUI theme definitions
+├── views/               # Route-level page compositions
+├── shared/              # Shared static assets
+└── utils/               # General utility helpers
 ```
 
-#### Component Hierarchy
-- **App.tsx**: Root component with theme provider and routing
-- **Navbar**: Top navigation with theme toggle
-- **AboutMe**: Main page component
-- **Section Components**: Modular components for different CV sections
+### Route Map
 
-### Styling Architecture
+- `/` - portfolio home page
+- `/blog` - blog index with topic list
+- `/blog/[slug]` - individual markdown article page
+- `/beats` - beats page
 
-#### Technology Stack
-- **Primary**: Material-UI (MUI) v6.4.1 with Emotion
-- **Secondary**: SCSS (Sass) for custom styling
-- **CSS-in-JS**: Emotion for component-specific styles
-- **CSS Variables**: Custom properties for theming
-- **Additional**: TailwindCSS v4.1.10 (configured but not actively used)
+## Rendering Model
 
-#### Theme System
-The application implements a sophisticated dual-theme system:
+### Root Layout
 
-##### Theme Configuration
-- **Dark Theme**: Cyberpunk-inspired with neon green (#00ff99) accents
-- **Light Theme**: Professional blue (#1976d2) color scheme
-- **Theme Provider**: Material-UI ThemeProvider with custom theme objects
-- **Dynamic Switching**: Runtime theme switching with state management
+- `src/app/layout.tsx` defines the global document structure
+- Global CSS and SCSS files are loaded here
+- `Providers` wraps the app with theme and layout context
 
-##### CSS Variables Architecture
-```scss
-:root {
-  // Dark theme variables
-  --dark-bg: #121212;
-  --dark-primary: #00ff99;
-  --dark-gradient: linear-gradient(135deg, #00ff99 0%, #00ff99 100%);
-  
-  // Light theme variables
-  --light-bg: #f5f5f5;
-  --light-primary: #1976d2;
-  --light-gradient: linear-gradient(135deg, #1976d2 0%, #64b5f6 100%);
-  
-  // Typography
-  --font-primary: 'Poppins', Arial, sans-serif;
-  --font-mono: 'Consolas', 'Courier New', monospace;
-}
-```
+### Providers
 
-##### Styling Layers
-1. **Global Styles** (`global.scss`): Base styles, theme classes, utility classes
-2. **Component Styles** (`*.scss`): Component-specific stylesheets
-3. **Material-UI Overrides**: Custom component styling through theme configuration
-4. **CSS Variables**: Dynamic theming and consistent design tokens
+- `src/app/providers.tsx` manages dark/light mode state
+- It selects between `darkTheme` and `lightTheme`
+- It also renders the shared navigation bar
+- Page content is wrapped in a centered `Container`
 
-#### Design System
-- **Typography**: Poppins font family with Material-UI typography variants
-- **Color Palette**: 
-  - Dark: Neon green (#00ff99), dark backgrounds (#121212, #1e1e1e)
-  - Light: Blue (#1976d2), light backgrounds (#f5f5f5, #ffffff)
-- **Spacing**: Material-UI spacing system (8px base unit)
-- **Shadows**: Custom shadow system with theme-specific values
-- **Animations**: CSS transitions (0.3s ease-in-out) for interactive elements
+### Page Composition
 
-### Data Architecture
+- `src/app/page.tsx` renders the main portfolio grid
+- `src/app/blog/page.tsx` loads blog posts and renders the blog index
+- `src/app/blog/[slug]/page.tsx` loads a single post and renders the article page
+- Route files remain thin and delegate UI to `views/`
 
-#### TypeScript Models
-```typescript
-// Core data interfaces
-interface Project {
-    name: string;
-    role: string;
-    description: string;
-    company: string;
-    techStack: string;
-    startDate: string;
-    endDate: string;
-}
+## Blog Architecture
 
-interface Experience {
-    // Experience data structure
-}
+The blog is file-based and markdown-driven.
 
-interface Education {
-    // Education data structure
-}
+### Content Storage
 
-interface Technology {
-    // Technology/skills data structure
-}
-```
+- Blog posts live in `src/client/content/blog`
+- Each post is a `.md` file with YAML-like frontmatter
+- Posts are grouped by skill category in subfolders
+- Planned posts and published posts share the same format
 
-#### Data Management
-- **Static Data**: Mock data stored in TypeScript files
-- **Services Layer**: `portfolio.service.ts` for data operations
-- **Type Safety**: Full TypeScript coverage for all data structures
-- **No Backend**: Currently frontend-only with static data
+### Models
 
-### State Management
-- **Local State**: React useState for component-level state
-- **Theme State**: Global theme state managed in App component
-- **No Global State**: No Redux/Zustand - simple prop drilling for theme
+- `src/models/Post.ts` defines the blog data contract
+- `Post` contains:
+  - `topic`
+  - `tags`
+  - `content`
+- `BlogPost` extends that base shape with route and display metadata
+- `BlogPostStatus` tracks `published` or `planned`
 
-### Performance Considerations
-- **Code Splitting**: React Router for route-based code splitting
-- **Bundle Optimization**: Create React App optimizations
-- **Image Optimization**: WebP support through CRA
-- **Lazy Loading**: Potential for component lazy loading
-- **Web Vitals**: Built-in web vitals monitoring
+### Loaders
 
-### Development Workflow
-- **Hot Reload**: Development server with hot module replacement
-- **Type Checking**: Real-time TypeScript compilation
-- **Linting**: ESLint with React-specific rules
-- **Testing**: Jest setup with React Testing Library
-- **Build Process**: Optimized production builds with CRA
+- `src/lib/blog.tsx` reads markdown files from disk
+- It parses frontmatter and extracts:
+  - slug
+  - topic
+  - tags
+  - status
+  - summary
+  - category metadata
+- It exposes:
+  - `getBlogPosts()`
+  - `getBlogPostBySlug()`
+  - `groupBlogPosts()`
 
-### Deployment Architecture
-- **Static Site**: Can be deployed to any static hosting service
-- **Build Output**: Optimized static files in `build/` directory
-- **Environment**: No server-side dependencies
-- **CDN Ready**: Static assets optimized for CDN delivery
+### Markdown Rendering
 
-### Future Considerations
-- **Backend Integration**: Potential for API integration
-- **CMS Integration**: Content management system for dynamic content
-- **PWA Features**: Progressive Web App capabilities
-- **Internationalization**: Multi-language support
-- **Analytics**: User behavior tracking
-- **SEO Optimization**: Server-side rendering considerations
+- `src/lib/markdown.tsx` renders markdown to React nodes
+- Supported formatting includes:
+  - headings
+  - paragraphs
+  - ordered and unordered lists
+  - blockquotes
+  - code blocks
+  - inline code
+  - bold text
+  - links
+- Rendering adapts to the active theme mode for code and quote styling
 
----
+### Blog Views
 
-*This architecture provides a solid foundation for a modern, maintainable, and scalable portfolio website with excellent developer experience and user interface.*
+- `src/views/Blog.tsx` renders the blog index as a flat list of topics
+- `src/views/BlogArticle.tsx` renders the article page
+- The index and article page both use theme-aware glass surfaces
+- Planned posts are visually de-emphasized with subtle blur/opacity treatment
+
+## Theme System
+
+The project uses a dual-theme system with MUI and SCSS variables.
+
+### Dark Theme
+
+- Neon green accents
+- Dark surfaces and gradients
+- Strong glow/shadow treatments
+- Used for both app chrome and blog surfaces
+
+### Light Theme
+
+- Blue-based accents
+- Soft light surfaces
+- More subtle shadows and gradients
+
+### Theme Switching
+
+- Theme state is managed in `Providers`
+- The same theme drives:
+  - MUI component colors
+  - global body/background classes
+  - glass surface helpers
+  - blog markdown rendering
+
+### Shared Surface Helpers
+
+- `src/styles/glass.styles.ts` centralizes glass-card styling
+- This helper is used by:
+  - avatar/profile surfaces
+  - blog list rows
+  - article content containers
+
+## Data Architecture
+
+### Portfolio Content
+
+- Portfolio sections use local TypeScript mock data
+- `portfolio.service.ts` exposes read helpers
+- Models exist for:
+  - contact
+  - experience
+  - education
+  - projects
+  - skills
+
+### Blog Content
+
+- Blog content is separate from portfolio data
+- Markdown files are the source of truth
+- The loader returns typed objects for rendering and routing
+
+## UI Architecture
+
+### Main Portfolio Page
+
+- `PortfolioGrid` is the primary section layout for the home page
+- It composes:
+  - header
+  - about
+  - skills
+  - experience
+  - education
+
+### Header / Avatar
+
+- `src/components/Header.tsx` renders the profile card
+- The avatar image is stored in `src/shared/img/profile-photo.jpeg`
+- The avatar is loaded through `models/Contact.ts`
+
+### Navigation
+
+- `Navbar.tsx` provides routing between home, blog, and beats
+- It also exposes the theme toggle button
+
+## Assets and Styling
+
+### Global Styles
+
+- `src/index.css` contains baseline reset styles
+- `src/styles/global.scss` defines theme classes and reusable global utility styles
+- `src/styles/Navbar.scss` and `src/styles/FlipCard.scss` contain component-specific SCSS
+
+### Static Assets
+
+- Shared images live under `src/shared/img`
+- The current profile photo is a JPG asset used by the header avatar
+
+## State Management
+
+- Local component state is used for theme toggling and small UI interactions
+- There is no Redux, Zustand, or external global state library
+- The blog route data is resolved server-side in the route files
+
+## Performance and Delivery
+
+- Blog routes are statically generated through `generateStaticParams`
+- Markdown content is loaded at build/runtime on the server side
+- Route-level components stay thin for cleaner code splitting
+- Static assets are bundled with the site for simple deployment
+
+## Development Workflow
+
+- Run the app from `src/client`
+- Use `npm run dev` for local development
+- Use `npm run build` to verify production output
+- The build includes type checking and static page generation
+
+## Notes on Current Direction
+
+- The project is currently frontend-only
+- The blog is now a real content system instead of a placeholder page
+- The design favors glassy surfaces, strong typography, and a dark/light theme that stays consistent across the whole app
+
