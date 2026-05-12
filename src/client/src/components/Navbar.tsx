@@ -1,7 +1,9 @@
+'use client';
+
 import React, { useState, useEffect, useRef } from 'react';
-import { NavLink } from 'react-router-dom';
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import ThemeToggleButton from './controls/ThemeToggleButton';
-import '../styles/Navbar.scss';
 
 interface NavbarProps {
   isDarkMode: boolean;
@@ -12,6 +14,7 @@ const Navbar: React.FC<NavbarProps> = ({ isDarkMode, onToggleTheme }) => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [showNavbar, setShowNavbar] = useState(true);
   const lastScrollY = useRef(0);
+  const pathname = usePathname();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -51,15 +54,27 @@ const Navbar: React.FC<NavbarProps> = ({ isDarkMode, onToggleTheme }) => {
         <span className="bar"></span>
       </button>
       <div className={`nav-links ${isMobileMenuOpen ? 'active' : ''}`}>
-        <NavLink to="/" className="nav-link" end onClick={closeMobileMenu}>
+        <Link
+          href="/"
+          className={`nav-link ${pathname === '/' ? 'active' : ''}`}
+          onClick={closeMobileMenu}
+        >
           About Me
-        </NavLink>
-        <NavLink to="/blog" className="nav-link" onClick={closeMobileMenu}>
+        </Link>
+        <Link
+          href="/blog"
+          className={`nav-link ${pathname === '/blog' ? 'active' : ''}`}
+          onClick={closeMobileMenu}
+        >
           Blog
-        </NavLink>
-        <NavLink to="/beats" className="nav-link" onClick={closeMobileMenu}>
+        </Link>
+        <Link
+          href="/beats"
+          className={`nav-link ${pathname === '/beats' ? 'active' : ''}`}
+          onClick={closeMobileMenu}
+        >
           My Beats
-        </NavLink>
+        </Link>
       </div>
     </nav>
   );

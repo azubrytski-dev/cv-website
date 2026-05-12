@@ -7,11 +7,9 @@ const Blog: React.FC = () => {
       <Typography variant="h4" gutterBottom>
         Blog
       </Typography>
-      <Typography variant="body1">
-        This is the blog page.
-      </Typography>
+      <Typography variant="body1">This is the blog page.</Typography>
     </div>
   );
 };
 
-export default Blog; 
+export default Blog;

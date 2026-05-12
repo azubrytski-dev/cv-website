@@ -1,7 +1,8 @@
+'use client';
+
 import React, { useState } from 'react';
 import { Box, Typography, useTheme, useMediaQuery } from '@mui/material';
 import { Flipper, Flipped } from 'react-flip-toolkit';
-import '../../styles/FlipCard.scss';
 
 interface FlipCardProps {
   frontText: string;

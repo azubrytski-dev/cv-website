@@ -1,0 +1,327 @@
+<html>
+  <head>
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="" />
+    <link
+      rel="stylesheet"
+      as="style"
+      onload="this.rel='stylesheet'"
+      href="https://fonts.googleapis.com/css2?display=swap&amp;family=Noto+Sans%3Awght%40400%3B500%3B700%3B900&amp;family=Space+Grotesk%3Awght%40400%3B500%3B700"
+    />
+
+    <title>Stitch Design</title>
+    <link rel="icon" type="image/x-icon" href="data:image/x-icon;base64," />
+
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  </head>
+  <body>
+    <div class="relative flex size-full min-h-screen flex-col bg-[#122118] dark group/design-root overflow-x-hidden" style='font-family: "Space Grotesk", "Noto Sans", sans-serif;'>
+      <div class="layout-container flex h-full grow flex-col">
+        <header class="flex items-center justify-between whitespace-nowrap border-b border-solid border-b-[#264532] px-10 py-3">
+          <div class="flex items-center gap-4 text-white">
+            <div class="size-4">
+              <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path
+                  fill-rule="evenodd"
+                  clip-rule="evenodd"
+                  d="M39.475 21.6262C40.358 21.4363 40.6863 21.5589 40.7581 21.5934C40.7876 21.655 40.8547 21.857 40.8082 22.3336C40.7408 23.0255 40.4502 24.0046 39.8572 25.2301C38.6799 27.6631 36.5085 30.6631 33.5858 33.5858C30.6631 36.5085 27.6632 38.6799 25.2301 39.8572C24.0046 40.4502 23.0255 40.7407 22.3336 40.8082C21.8571 40.8547 21.6551 40.7875 21.5934 40.7581C21.5589 40.6863 21.4363 40.358 21.6262 39.475C21.8562 38.4054 22.4689 36.9657 23.5038 35.2817C24.7575 33.2417 26.5497 30.9744 28.7621 28.762C30.9744 26.5497 33.2417 24.7574 35.2817 23.5037C36.9657 22.4689 38.4054 21.8562 39.475 21.6262ZM4.41189 29.2403L18.7597 43.5881C19.8813 44.7097 21.4027 44.9179 22.7217 44.7893C24.0585 44.659 25.5148 44.1631 26.9723 43.4579C29.9052 42.0387 33.2618 39.5667 36.4142 36.4142C39.5667 33.2618 42.0387 29.9052 43.4579 26.9723C44.1631 25.5148 44.659 24.0585 44.7893 22.7217C44.9179 21.4027 44.7097 19.8813 43.5881 18.7597L29.2403 4.41187C27.8527 3.02428 25.8765 3.02573 24.2861 3.36776C22.6081 3.72863 20.7334 4.58419 18.8396 5.74801C16.4978 7.18716 13.9881 9.18353 11.5858 11.5858C9.18354 13.988 7.18717 16.4978 5.74802 18.8396C4.58421 20.7334 3.72865 22.6081 3.36778 24.2861C3.02574 25.8765 3.02429 27.8527 4.41189 29.2403Z"
+                  fill="currentColor"
+                ></path>
+              </svg>
+            </div>
+            <h2 class="text-white text-lg font-bold leading-tight tracking-[-0.015em]">BeatCrafter</h2>
+          </div>
+          <div class="flex flex-1 justify-end gap-8">
+            <div class="flex items-center gap-9">
+              <a class="text-white text-sm font-medium leading-normal" href="#">Home</a>
+              <a class="text-white text-sm font-medium leading-normal" href="#">Browse</a>
+              <a class="text-white text-sm font-medium leading-normal" href="#">About</a>
+              <a class="text-white text-sm font-medium leading-normal" href="#">Contact</a>
+            </div>
+            <div class="flex gap-2">
+              <button
+                class="flex max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 bg-[#264532] text-white gap-2 text-sm font-bold leading-normal tracking-[0.015em] min-w-0 px-2.5"
+              >
+                <div class="text-white" data-icon="MagnifyingGlass" data-size="20px" data-weight="regular">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" fill="currentColor" viewBox="0 0 256 256">
+                    <path
+                      d="M229.66,218.34l-50.07-50.06a88.11,88.11,0,1,0-11.31,11.31l50.06,50.07a8,8,0,0,0,11.32-11.32ZM40,112a72,72,0,1,1,72,72A72.08,72.08,0,0,1,40,112Z"
+                    ></path>
+                  </svg>
+                </div>
+              </button>
+              <button
+              class="flex max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 bg-[#264532] text-white gap-2 text-sm font-bold leading-normal tracking-[0.015em] min-w-0 px-2.5"
+              >
+                <div class="text-white" data-icon="ShoppingCart" data-size="20px" data-weight="regular">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" fill="currentColor" viewBox="0 0 256 256">
+                    <path
+                      d="M222.14,58.87A8,8,0,0,0,216,56H54.68L49.79,29.14A16,16,0,0,0,34.05,16H16a8,8,0,0,0,0,16h18L59.56,172.29a24,24,0,0,0,5.33,11.27,28,28,0,1,0,44.4,8.44h45.42A27.75,27.75,0,0,0,152,204a28,28,0,1,0,28-28H83.17a8,8,0,0,1-7.87-6.57L72.13,152h116a24,24,0,0,0,23.61-19.71l12.16-66.86A8,8,0,0,0,222.14,58.87ZM96,204a12,12,0,1,1-12-12A12,12,0,0,1,96,204Zm96,0a12,12,0,1,1-12-12A12,12,0,0,1,192,204Zm4-74.57A8,8,0,0,1,188.1,136H69.22L57.59,72H206.41Z"
+                    ></path>
+                  </svg>
+                </div>
+              </button>
+            </div>
+            <div
+              class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10"
+              style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCURBv5qaJWOw7xDVjXJ0XnB2pdU1p88SgYLLKQN22soqbB0LVVA3GvKWZTazooN4CsuBnWUO8ZyALIbQsLi_PDlXfJaGwnG5XBnyg1QmAj8QM2T7ZrhvFtVgQ8w2xqjyPnR9-Txr4hRacypV32i9mg_rjH9qCOzVTAO8mM7Y0nP5jlPWkmhfTDEF6dZVuCqdzOrY4HYC-GfgXZ9Y7QRAG82QoajgH10Hjj0THStG3fakjmO3ZbdKRS2zWABKtEYZ9F7YClZulZ1r4");'
+            ></div>
+          </div>
+        </header>
+        <div class="px-40 flex flex-1 justify-center py-5">
+          <div class="layout-content-container flex flex-col max-w-[960px] flex-1">
+            <div class="flex flex-wrap justify-between gap-3 p-4"><p class="text-white tracking-light text-[32px] font-bold leading-tight min-w-72">Explore Beats</p></div>
+            <div class="px-4 py-3">
+              <label class="flex flex-col min-w-40 h-12 w-full">
+                <div class="flex w-full flex-1 items-stretch rounded-lg h-full">
+                  <div
+                    class="text-[#96c5a8] flex border-none bg-[#264532] items-center justify-center pl-4 rounded-l-lg border-r-0"
+                    data-icon="MagnifyingGlass"
+                    data-size="24px"
+                    data-weight="regular"
+                  >
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" fill="currentColor" viewBox="0 0 256 256">
+                      <path
+                        d="M229.66,218.34l-50.07-50.06a88.11,88.11,0,1,0-11.31,11.31l50.06,50.07a8,8,0,0,0,11.32-11.32ZM40,112a72,72,0,1,1,72,72A72.08,72.08,0,0,1,40,112Z"
+                      ></path>
+                    </svg>
+                  </div>
+                  <input
+                    placeholder="Search for beats"
+                    class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg text-white focus:outline-0 focus:ring-0 border-none bg-[#264532] focus:border-none h-full placeholder:text-[#96c5a8] px-4 rounded-l-none border-l-0 pl-2 text-base font-normal leading-normal"
+                    value=""
+                  />
+                </div>
+              </label>
+            </div>
+            <div class="flex justify-stretch">
+              <div class="flex flex-1 gap-3 flex-wrap px-4 py-3 justify-start">
+                <button
+                  class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-[#264532] text-white text-sm font-bold leading-normal tracking-[0.015em]"
+                >
+                  <span class="truncate">All</span>
+                </button>
+                <button
+                  class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-[#264532] text-white text-sm font-bold leading-normal tracking-[0.015em]"
+                >
+                  <span class="truncate">Hip Hop</span>
+                </button>
+                <button
+                class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-[#264532] text-white text-sm font-bold leading-normal tracking-[0.015em]"
+              >
+                <span class="truncate">Electronic</span>
+              </button>
+              <button
+                class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-[#264532] text-white text-sm font-bold leading-normal tracking-[0.015em]"
+              >
+                <span class="truncate">Pop</span>
+              </button>
+              <button
+                class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-[#264532] text-white text-sm font-bold leading-normal tracking-[0.015em]"
+              >
+                <span class="truncate">R&amp;B</span>
+              </button>
+            </div>
+          </div>
+          <h2 class="text-white text-[22px] font-bold leading-tight tracking-[-0.015em] px-4 pb-3 pt-5">Featured Tracks</h2>
+          <div class="flex gap-4 bg-[#122118] px-4 py-3 justify-between">
+            <div class="flex items-start gap-4">
+              <div
+                class="bg-center bg-no-repeat aspect-square bg-cover rounded-lg size-[70px]"
+                style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAZJxuVSlc8Dym9oWMn9ONayRStKJMOAxmkpUk6sBuVoHecV7KhfMBAOJ0MuLKfpXYgw2JP6dn0u50VwfqS4pR83Q9MRz56uOmkj3W5kczPZWYLInfYOhgfE3vycLo6QSO2oqZF03ByZS4vjhPHvP6xdTKvF_6FuqPPHXtV1r1SOsDPIIKioLaOViA7AAQWDY1JImhT7SMHBVBhP1iJF8b5vpIeSZJuQCiGR1XHjU7s2Axh3ehO4iVzfBiyHKVAEAVt5kWXb40WyGY");'
+              ></div>
+              <div class="flex flex-1 flex-col justify-center">
+                <p class="text-white text-base font-medium leading-normal">Track Title 1</p>
+                <p class="text-[#96c5a8] text-sm font-normal leading-normal">Genre: Hip Hop</p>
+                <p class="text-[#96c5a8] text-sm font-normal leading-normal">Producer: DJ Rhythm</p>
+              </div>
+            </div>
+            <div class="shrink-0">
+              <div class="text-white flex size-7 items-center justify-center" data-icon="Plus" data-size="24px" data-weight="regular">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" fill="currentColor" viewBox="0 0 256 256">
+                  <path d="M224,128a8,8,0,0,1-8,8H136v80a8,8,0,0,1-16,0V136H40a8,8,0,0,1,0-16h80V40a8,8,0,0,1,16,0v80h80A8,8,0,0,1,224,128Z"></path>
+                </svg>
+              </div>
+            </div>
+          </div>
+          <div class="flex gap-4 bg-[#122118] px-4 py-3 justify-between">
+            <div class="flex items-start gap-4">
+              <div
+                class="bg-center bg-no-repeat aspect-square bg-cover rounded-lg size-[70px]"
+                style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCOY4G7MT-YyNBxIGVkySR3SUyNgIVATYIJjjjve2jJhQXhNIiNvMWDYKr3oTIoJIZu9vF19OSMIFB9DYsx35i81IU24GOyFmoKyN5aCyh2HOJqv50TETixQzoxQ0mPNnRNP_84w2HVfS4Aewzzyej9xz0zFybYfS6HZxbFmcSj9z1W2adi3b28DpsUr-ZuVnKW5TyRqx1HsfPJO5W0wmjqIUiIlqXzRwnh1_ADAMumLXZMMU5PRWTeWy8ienhGN3Rx1Yi1oOZt6b8");'
+              ></div>
+              <div class="flex flex-1 flex-col justify-center">
+                <p class="text-white text-base font-medium leading-normal">Track Title 2</p>
+                <p class="text-[#96c5a8] text-sm font-normal leading-normal">Genre: Electronic</p>
+                <p class="text-[#96c5a8] text-sm font-normal leading-normal">Producer: BeatMaster</p>
+              </div>
+            </div>
+            <div class="shrink-0">
+              <div class="text-white flex size-7 items-center justify-center" data-icon="Plus" data-size="24px" data-weight="regular">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" fill="currentColor" viewBox="0 0 256 256">
+                  <path d="M224,128a8,8,0,0,1-8,8H136v80a8,8,0,0,1-16,0V136H40a8,8,0,0,1,0-16h80V40a8,8,0,0,1,16,0v80h80A8,8,0,0,1,224,128Z"></path>
+                </svg>
+              </div>
+            </div>
+          </div>
+          <div class="flex gap-4 bg-[#122118] px-4 py-3 justify-between">
+            <div class="flex items-start gap-4">
+              <div
+                class="bg-center bg-no-repeat aspect-square bg-cover rounded-lg size-[70px]"
+                style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBOMyQidYrUyEP6W4kG_iBC3S9UfB9DVyoDj3QO_-UjMT8xMKrUMbQeXCGA7AGdNqvqXTbX-UlFPB7cjGJwjMSRG6RcMy-R_ly128AGwY66a3JCxVO-zzoSQOhdNcrDZaP-Ke3GXgp5pPbw_WggekC6cQmBG8vEran432jhkqSmYtkOBFVwaFRCOFtWiUgkOSc-cevGQLrKOTfXfB6i0UmdcfNzk5eoSjlRrK1GQanI8Zi4uJ5czA0ajElxmg5g3zWYWQBMnyuV4Ys");'
+              ></div>
+              <div class="flex flex-1 flex-col justify-center">
+                <p class="text-white text-base font-medium leading-normal">Track Title 3</p>
+                <p class="text-[#96c5a8] text-sm font-normal leading-normal">Genre: Pop</p>
+                <p class="text-[#96c5a8] text-sm font-normal leading-normal">Producer: SonicWave</p>
+              </div>
+            </div>
+            <div class="shrink-0">
+              <div class="text-white flex size-7 items-center justify-center" data-icon="Plus" data-size="24px" data-weight="regular">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" fill="currentColor" viewBox="0 0 256 256">
+                  <path d="M224,128a8,8,0,0,1-8,8H136v80a8,8,0,0,1-16,0V136H40a8,8,0,0,1,0-16h80V40a8,8,0,0,1,16,0v80h80A8,8,0,0,1,224,128Z"></path>
+                </svg>
+              </div>
+            </div>
+          </div>
+          <div class="flex gap-4 bg-[#122118] px-4 py-3 justify-between">
+            <div class="flex items-start gap-4">
+              <div
+                class="bg-center bg-no-repeat aspect-square bg-cover rounded-lg size-[70px]"
+                style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCqRBG-5bJrXjJhJUrQGZpsh4CgBg54wJ1qpmR2A5z5bUmcnK5ayBwzac4qCWLqjzxHcXCBNGRAhVUXvDHajWGvYrNkRgN77Ksu2kx-F8TegHDWD7FRjfnlnWSwjXlQlfx-PDKKqAerg-uvwd8hnxk0qVvSvXuuDWxoSi-htGQd--szloOr0UjMyTDLd0tjMaSG_IgpCloi1w_6Yv52AJVi02moPeNl_LcOIpye-lfapToxW3nCzr2hSkINmsLZI68E9O2AIAjUSnY");'
+              ></div>
+              <div class="flex flex-1 flex-col justify-center">
+                <p class="text-white text-base font-medium leading-normal">Track Title 4</p>
+                <p class="text-[#96c5a8] text-sm font-normal leading-normal">Genre: R&amp;B</p>
+                <p class="text-[#96c5a8] text-sm font-normal leading-normal">Producer: MelodyMaker</p>
+              </div>
+            </div>
+            <div class="shrink-0">
+              <div class="text-white flex size-7 items-center justify-center" data-icon="Plus" data-size="24px" data-weight="regular">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" fill="currentColor" viewBox="0 0 256 256">
+                  <path d="M224,128a8,8,0,0,1-8,8H136v80a8,8,0,0,1-16,0V136H40a8,8,0,0,1,0-16h80V40a8,8,0,0,1,16,0v80h80A8,8,0,0,1,224,128Z"></path>
+                </svg>
+              </div>
+            </div>
+          </div>
+          <div class="flex gap-4 bg-[#122118] px-4 py-3 justify-between">
+            <div class="flex items-start gap-4">
+              <div
+                class="bg-center bg-no-repeat aspect-square bg-cover rounded-lg size-[70px]"
+                style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCjFJBX3tPHOV-0XcvADpuindWS8Yu_eOKzwZf7amHoVko-pyTp0kESc22FGgvALEsn9wrSjph_KA44hQHtJos4x29sjK_7Gu3gssN7TEcvez3N-ErB-juGhjzKBbhZZ5VyFSdPXOcoB5fLLW_P7r2i32kogV1AqFaaj0kNZxWBPtESv-cIwR1MgxBJWRv1awX1JXFA7bWPEBUH6Z5PZYTOrFcBKfEZIFOB3G3wBYKV-oPrTF0iMUZR32yxulirzi7EF5xcPBT52Jw");'
+                ></div>
+                <div class="flex flex-1 flex-col justify-center">
+                  <p class="text-white text-base font-medium leading-normal">Track Title 5</p>
+                  <p class="text-[#96c5a8] text-sm font-normal leading-normal">Genre: Dance</p>
+                  <p class="text-[#96c5a8] text-sm font-normal leading-normal">Producer: BassLine</p>
+                </div>
+              </div>
+              <div class="shrink-0">
+                <div class="text-white flex size-7 items-center justify-center" data-icon="Plus" data-size="24px" data-weight="regular">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" fill="currentColor" viewBox="0 0 256 256">
+                    <path d="M224,128a8,8,0,0,1-8,8H136v80a8,8,0,0,1-16,0V136H40a8,8,0,0,1,0-16h80V40a8,8,0,0,1,16,0v80h80A8,8,0,0,1,224,128Z"></path>
+                  </svg>
+                </div>
+              </div>
+            </div>
+            <div class="px-4 py-3">
+              <div class="flex flex-col gap-3 rounded-lg bg-[#264532] px-4 py-3">
+                <div class="flex items-center gap-4 overflow-hidden">
+                  <div
+                    class="bg-center bg-no-repeat aspect-square bg-cover rounded-lg size-14 shrink-0"
+                    style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAhnXx5O1_BbOxis3CsDUFaHtCOZvpDLPGnOBwtl6yW7I0KzpVi9lqGWWrC1U-Wxtk6ZUkjYvLye-9li6I8rqJhe07guz11JSMAyQ-nBpAbsl9bdMkqOSz_XETYRERvqlctVVtr604cENshQ0t44wXPiFYseT4JpvDVTZvyGyiy25cmnEOlXkJWxCScO5MnxgNulACgrBkkEBzYofNC6x_1YLeoYZQnJACWAd9_WJPX6qDfLzBbuiMLP8qPe3cF5K6caJxrwLyIVXs");'
+                  ></div>
+                  <div class="flex-1">
+                    <p class="text-white text-base font-bold leading-tight truncate">Track Title 1</p>
+                    <p class="text-[#96c5a8] text-sm font-normal leading-normal truncate">DJ Rhythm</p>
+                  </div>
+                  <button class="flex shrink-0 items-center justify-center rounded-full size-10 bg-[#39e079] text-[#122118]">
+                    <div class="text-inherit" data-icon="Play" data-size="20px" data-weight="fill">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" fill="currentColor" viewBox="0 0 256 256">
+                        <path
+                          d="M240,128a15.74,15.74,0,0,1-7.6,13.51L88.32,229.65a16,16,0,0,1-16.2.3A15.86,15.86,0,0,1,64,216.13V39.87a15.86,15.86,0,0,1,8.12-13.82,16,16,0,0,1,16.2.3L232.4,114.49A15.74,15.74,0,0,1,240,128Z"
+                        ></path>
+                      </svg>
+                    </div>
+                  </button>
+                </div>
+                <div class="pt-1.5">
+                  <div class="flex h-4 items-center justify-center">
+                    <div class="h-1 flex-1 rounded-full bg-[#39e079]"></div>
+                    <div class="relative"><div class="absolute -left-2 -top-2 size-4 rounded-full bg-[#39e079]"></div></div>
+                    <div class="h-1 flex-1 rounded-full bg-[#39e079] opacity-40"></div>
+                  </div>
+                  <div class="flex items-center justify-between">
+                    <p class="text-[#96c5a8] text-xs font-medium leading-normal tracking-[0.015em]">1:17</p>
+                    <p class="text-[#96c5a8] text-xs font-medium leading-normal tracking-[0.015em]">2:23</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="@container">
+              <div class="gap-2 px-4 flex flex-wrap justify-start">
+                <div class="flex flex-col items-center gap-2 bg-[#122118] py-2.5 text-center w-20">
+                  <div class="rounded-full bg-[#264532] p-2.5">
+                    <div class="text-white" data-icon="Shuffle" data-size="20px" data-weight="regular">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" fill="currentColor" viewBox="0 0 256 256">
+                        <path
+                          d="M237.66,178.34a8,8,0,0,1,0,11.32l-24,24a8,8,0,0,1-11.32-11.32L212.69,192H200.94a72.12,72.12,0,0,1-58.59-30.15l-41.72-58.4A56.1,56.1,0,0,0,55.06,80H32a8,8,0,0,1,0-16H55.06a72.12,72.12,0,0,1,58.59,30.15l41.72,58.4A56.1,56.1,0,0,0,200.94,176h11.75l-10.35-10.34a8,8,0,0,1,11.32-11.32ZM143,107a8,8,0,0,0,11.16-1.86l1.2-1.67A56.1,56.1,0,0,1,200.94,80h11.75L202.34,90.34a8,8,0,0,0,11.32,11.32l24-24a8,8,0,0,0,0-11.32l-24-24a8,8,0,0,0-11.32,11.32L212.69,64H200.94a72.12,72.12,0,0,0-58.59,30.15l-1.2,1.67A8,8,0,0,0,143,107Zm-30,42a8,8,0,0,0-11.16,1.86l-1.2,1.67A56.1,56.1,0,0,1,55.06,176H32a8,8,0,0,0,0,16H55.06a72.12,72.12,0,0,0,58.59-30.15l1.2-1.67A8,8,0,0,0,113,149Z"
+                        ></path>
+                      </svg>
+                    </div>
+                  </div>
+                  <p class="text-white text-sm font-medium leading-normal">Shuffle</p>
+                </div>
+                <div class="flex flex-col items-center gap-2 bg-[#122118] py-2.5 text-center w-20">
+                  <div class="rounded-full bg-[#264532] p-2.5">
+                    <div class="text-white" data-icon="Rewind" data-size="20px" data-weight="regular">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" fill="currentColor" viewBox="0 0 256 256">
+                        <path
+                          d="M223.77,58a16,16,0,0,0-16.25.53L128,109.14V71.84A15.91,15.91,0,0,0,103.52,58.5L15.33,114.66a15.8,15.8,0,0,0,0,26.68l88.19,56.16A15.91,15.91,0,0,0,128,184.16v-37.3l79.52,50.64A15.91,15.91,0,0,0,232,184.16V71.84A15.83,15.83,0,0,0,223.77,58ZM112,183.93,24.18,128,112,72.06Zm104,0L128.18,128,216,72.06Z"
+                        ></path>
+                      </svg>
+                    </div>
+                  </div>
+                  <p class="text-white text-sm font-medium leading-normal">Previous</p>
+                </div>
+                <div class="flex flex-col items-center gap-2 bg-[#122118] py-2.5 text-center w-20">
+                  <div class="rounded-full bg-[#264532] p-2.5">
+                    <div class="text-white" data-icon="FastForward" data-size="20px" data-weight="regular">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" fill="currentColor" viewBox="0 0 256 256">
+                        <path
+                          d="M240.67,114.66,152.48,58.5A15.91,15.91,0,0,0,128,71.84v37.3L48.48,58.5A15.91,15.91,0,0,0,24,71.84V184.16A15.92,15.92,0,0,0,48.48,197.5L128,146.86v37.3a15.92,15.92,0,0,0,24.48,13.34l88.19-56.16a15.8,15.8,0,0,0,0-26.68ZM40,183.94V72.07L127.82,128Zm104,0V72.07L231.82,128Z"
+                        ></path>
+                      </svg>
+                    </div>
+                  </div>
+                  <p class="text-white text-sm font-medium leading-normal">Next</p>
+                </div>
+                <div class="flex flex-col items-center gap-2 bg-[#122118] py-2.5 text-center w-20">
+                  <div class="rounded-full bg-[#264532] p-2.5">
+                    <div class="text-white" data-icon="Heart" data-size="20px" data-weight="regular">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" fill="currentColor" viewBox="0 0 256 256">
+                        <path
+                          d="M178,32c-20.65,0-38.73,8.88-50,23.89C116.73,40.88,98.65,32,78,32A62.07,62.07,0,0,0,16,94c0,70,103.79,126.66,108.21,129a8,8,0,0,0,7.58,0C136.21,220.66,240,164,240,94A62.07,62.07,0,0,0,178,32ZM128,206.8C109.74,196.16,32,147.69,32,94A46.06,46.06,0,0,1,78,48c19.45,0,35.78,10.36,42.6,27a8,8,0,0,0,14.8,0c6.82-16.67,23.15-27,42.6-27a46.06,46.06,0,0,1,46,46C224,147.61,146.24,196.15,128,206.8Z"
+                        ></path>
+                      </svg>
+                    </div>
+                  </div>
+                  <p class="text-white text-sm font-medium leading-normal">Favorite</p>
+                </div>
+                <div class="flex flex-col items-center gap-2 bg-[#122118] py-2.5 text-center w-20">
+                  <div class="rounded-full bg-[#264532] p-2.5">
+                    <div class="text-white" data-icon="Plus" data-size="20px" data-weight="regular">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" fill="currentColor" viewBox="0 0 256 256">
+                        <path d="M224,128a8,8,0,0,1-8,8H136v80a8,8,0,0,1-16,0V136H40a8,8,0,0,1,0-16h80V40a8,8,0,0,1,16,0v80h80A8,8,0,0,1,224,128Z"></path>
+                      </svg>
+                    </div>
+                  </div>
+                  <p class="text-white text-sm font-medium leading-normal">Add</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

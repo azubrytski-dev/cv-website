@@ -1,17 +1,14 @@
+'use client';
+
 import React, { useEffect, useState } from "react";
-import { Typography, Box, Paper, Grid } from "@mui/material";
-import { styled } from "@mui/system";
+import { Typography, Box, Paper, Grid, useTheme } from "@mui/material";
 import { Education as EducationModel } from "../models/Education";
 import { getEducationInformation } from "../services/portfolio.service";
-
-const EducationPaper = styled(Paper)(({ theme }) => ({
-  padding: "1rem",
-  margin: "1rem 0",
-  borderRadius: "0.75rem",
-}));
+import { getGlassSurfaceStyles } from "../styles/glass.styles";
 
 const Education: React.FC = () => {
   const [educationData, setEducationData] = useState<EducationModel[]>([]);
+  const theme = useTheme();
 
   useEffect(() => {
     setEducationData(getEducationInformation());
@@ -25,7 +22,15 @@ const Education: React.FC = () => {
       <Grid container spacing={2} sx={{ width: "100%", justifyContent: "center" }}>
         {educationData.map((edu, index) => (
           <Grid item xs={12} md={6} key={index}>
-            <EducationPaper elevation={3}>
+            <Paper
+              elevation={3}
+              sx={{
+                padding: "1rem",
+                margin: "1rem 0",
+                borderRadius: "0.75rem",
+                ...getGlassSurfaceStyles(theme),
+              }}
+            >
               <Typography variant="h6">{edu.institution}</Typography>
               <Typography variant="body1">{edu.degree}</Typography>
               <Typography variant="body2">{edu.specialization}</Typography>
@@ -36,7 +41,7 @@ const Education: React.FC = () => {
               <Box sx={{ display: 'flex', justifyContent: 'flex-end', marginTop: '1rem' }}>
                 <Typography variant="caption" color="text.secondary">{edu.graduatedYear}</Typography>
               </Box>
-            </EducationPaper>
+            </Paper>
           </Grid>
         ))}
       </Grid>
