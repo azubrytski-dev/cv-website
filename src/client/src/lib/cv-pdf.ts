@@ -178,7 +178,7 @@ function getSkillCategoryTitles(categoryKey: string): string[] {
 }
 
 function buildSummary(): string {
-  return `${contactDataMock.title} with experience across FinTech, Healthcare, PLM, E-Commerce, and Insurance. I build backend-heavy products, shape architecture, and stay hands-on with AI tools, automation, and practical engineering workflows.`;
+  return `Full-stack, full-cycle software engineer with 7+ years of experience building backend-heavy products across FinTech, Healthcare, PLM, E-Commerce, and Insurance. I work from architecture and delivery planning through implementation and release, and I like blending practical engineering with AI tools, automation, and a product-minded approach.`;
 }
 
 function buildCoreSkills(): Array<{ label: string; value: string }> {

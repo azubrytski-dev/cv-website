@@ -26,6 +26,7 @@ export default function Providers({
         className={isDarkMode ? 'dark-theme' : 'light-theme'}
         sx={{
           minHeight: '100vh',
+          '--navbar-height': { xs: '4.05rem', md: '4.25rem' },
         }}
       >
         <Navbar isDarkMode={isDarkMode} onToggleTheme={handleThemeToggle} />
