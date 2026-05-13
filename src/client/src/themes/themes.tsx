@@ -81,6 +81,14 @@ export const darkTheme = createTheme({
         },
       },
     },
+    MuiStack: {
+      styleOverrides: {
+        root: {
+          borderRadius: '0.75rem',
+          overflow: 'hidden',
+        },
+      },
+    },
     MuiButton: {
       styleOverrides: {
         root: {
@@ -151,6 +159,14 @@ export const lightTheme = createTheme({
               color: lightPalette.primary,
             },
           },
+        },
+      },
+    },
+    MuiStack: {
+      styleOverrides: {
+        root: {
+          borderRadius: '0.75rem',
+          overflow: 'hidden',
         },
       },
     },
