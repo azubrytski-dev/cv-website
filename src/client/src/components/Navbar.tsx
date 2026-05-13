@@ -13,11 +13,30 @@ interface NavbarProps {
 const Navbar: React.FC<NavbarProps> = ({ isDarkMode, onToggleTheme }) => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [showNavbar, setShowNavbar] = useState(true);
+  const [isDesktop, setIsDesktop] = useState(true);
   const lastScrollY = useRef(0);
   const pathname = usePathname();
 
   useEffect(() => {
+    const mediaQuery = window.matchMedia('(min-width: 769px)');
+    const updateLayoutMode = () => {
+      setIsDesktop(mediaQuery.matches);
+      setShowNavbar(true);
+      lastScrollY.current = window.scrollY;
+    };
+
+    updateLayoutMode();
+
+    const handleMediaChange = () => {
+      updateLayoutMode();
+    };
+
     const handleScroll = () => {
+      if (!mediaQuery.matches) {
+        setShowNavbar(true);
+        return;
+      }
+
       const currentScrollY = window.scrollY;
       if (currentScrollY > lastScrollY.current && currentScrollY > 100) {
         setShowNavbar(false);
@@ -28,9 +47,11 @@ const Navbar: React.FC<NavbarProps> = ({ isDarkMode, onToggleTheme }) => {
     };
 
     window.addEventListener('scroll', handleScroll, { passive: true });
+    mediaQuery.addEventListener('change', handleMediaChange);
 
     return () => {
       window.removeEventListener('scroll', handleScroll);
+      mediaQuery.removeEventListener('change', handleMediaChange);
     };
   }, []);
 
@@ -43,7 +64,7 @@ const Navbar: React.FC<NavbarProps> = ({ isDarkMode, onToggleTheme }) => {
   };
 
   return (
-    <nav className={`navbar ${showNavbar ? '' : 'navbar--hidden'}`}>
+    <nav className={`navbar ${isDesktop && !showNavbar ? 'navbar--hidden' : ''}`}>
       <div className="navbar-left">
         <div className="navbar-title">Andrei Zubrytski</div>
         <ThemeToggleButton isDarkMode={isDarkMode} onToggleTheme={onToggleTheme} />

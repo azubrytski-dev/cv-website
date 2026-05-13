@@ -22,9 +22,20 @@ export default function Providers({
   return (
     <ThemeProvider theme={currentTheme}>
       <CssBaseline />
-      <Box className={isDarkMode ? 'dark-theme' : 'light-theme'}>
+      <Box
+        className={isDarkMode ? 'dark-theme' : 'light-theme'}
+        sx={{
+          minHeight: '100vh',
+        }}
+      >
         <Navbar isDarkMode={isDarkMode} onToggleTheme={handleThemeToggle} />
-        <Container sx={{ textAlign: 'center', py: 4 }}>
+        <Container
+          sx={{
+            textAlign: 'center',
+            pt: 'calc(var(--navbar-height, 4.75rem) + env(safe-area-inset-top, 0px))',
+            pb: 4,
+          }}
+        >
           {children}
         </Container>
       </Box>
