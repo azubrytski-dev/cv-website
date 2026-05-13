@@ -25,7 +25,7 @@ export default function Providers({
       <Box className={isDarkMode ? 'dark-theme' : 'light-theme'}>
         <Navbar isDarkMode={isDarkMode} onToggleTheme={handleThemeToggle} />
         <Container sx={{ textAlign: 'center', py: 4 }}>
-          <Box sx={{ position: 'relative', minHeight: '100vh' }}>{children}</Box>
+          {children}
         </Container>
       </Box>
     </ThemeProvider>

@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
-import { Box, IconButton, Paper, Stack, useTheme } from '@mui/material';
+import { Box, IconButton, Paper, Stack, Typography, useTheme } from '@mui/material';
 
 import { renderMarkdown } from '../lib/markdown';
 import type { BlogPost } from '../models/Post';
@@ -36,7 +36,7 @@ export default function BlogArticle({ post }: BlogArticleProps) {
   const articleBody = stripLeadingHeading(post.content);
 
   return (
-    <Box
+    <Stack
       sx={{
         px: { xs: 2, md: 4 },
         py: { xs: 4, md: 6 },
@@ -45,8 +45,21 @@ export default function BlogArticle({ post }: BlogArticleProps) {
           : 'radial-gradient(circle at top right, rgba(59,130,246,0.14), transparent 32%), linear-gradient(180deg, rgba(15,23,42,0.03), transparent 30%)',
       }}
     >
-      <Stack spacing={2.25} sx={{ maxWidth: 980, width: '100%', alignItems: 'flex-start' }}>
-        <Stack direction="row" spacing={1.5} sx={{ width: '100%', alignItems: 'center' }}>
+      <Typography
+        variant="h3"
+        sx={{
+          mb: 4.5,
+          fontWeight: 850,
+          letterSpacing: '-0.05em',
+          lineHeight: 1.05,
+          textAlign: 'left',
+        }}
+      >
+        Blog
+      </Typography>
+
+      <Stack spacing={2.75} sx={{ maxWidth: 980, width: '100%', alignItems: 'flex-start', backgroundColor: 'transparent' }}>
+        <Stack direction="row" spacing={1.5} sx={{ width: '100%', alignItems: 'center', minWidth: 0 }}>
           <IconButton
             component={Link}
             href="/blog"
@@ -60,47 +73,33 @@ export default function BlogArticle({ post }: BlogArticleProps) {
               borderColor: isDark ? 'rgba(0, 255, 153, 0.18)' : 'rgba(25, 118, 210, 0.16)',
               backgroundColor: 'transparent',
               color: isDark ? 'rgb(0, 255, 153)' : 'primary.main',
-              transition: 'transform 180ms ease, background-color 180ms ease, border-color 180ms ease',
+              transition: 'background-color 180ms ease, border-color 180ms ease',
               '&:hover': {
                 backgroundColor: isDark ? 'rgba(0, 255, 153, 0.08)' : 'rgba(25, 118, 210, 0.06)',
                 borderColor: isDark ? 'rgba(0, 255, 153, 0.28)' : 'rgba(25, 118, 210, 0.24)',
-                transform: 'translateY(-1px)',
               },
             }}
           >
             <ArrowBackIcon />
           </IconButton>
-          <Box
+          <Typography
+            component="h1"
             sx={{
+              margin: 0,
               flex: 1,
               minWidth: 0,
-              px: { xs: 2, md: 3 },
-              height: 56,
-              borderRadius: 3,
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              ...getGlassSurfaceStyles(theme, isDark ? '0 255 153' : '25 118 210'),
+              fontSize: { xs: '1.45rem', md: '2rem' },
+              lineHeight: 1.1,
+              letterSpacing: '-0.04em',
+              fontWeight: 800,
+              color: 'text.primary',
+              overflow: 'hidden',
+              textOverflow: 'ellipsis',
+              whiteSpace: 'nowrap',
             }}
           >
-            <Box
-              component="h1"
-              sx={{
-                margin: 0,
-                width: '100%',
-                fontSize: { xs: '1.45rem', md: '2rem' },
-                lineHeight: 1,
-                letterSpacing: '-0.04em',
-                fontWeight: 800,
-                color: 'text.primary',
-                overflow: 'hidden',
-                textOverflow: 'ellipsis',
-                whiteSpace: 'nowrap',
-              }}
-            >
-              {post.topic}
-            </Box>
-          </Box>
+            {post.topic}
+          </Typography>
         </Stack>
 
         <Paper
@@ -130,6 +129,6 @@ export default function BlogArticle({ post }: BlogArticleProps) {
           </Box>
         </Paper>
       </Stack>
-    </Box>
+    </Stack>
   );
 }

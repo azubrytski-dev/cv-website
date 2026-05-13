@@ -9,14 +9,14 @@ const skillCategories = getSkillCategoriesInformation();
 
 const Skills: React.FC = () => {
   return (
-    <Box sx={{ padding: "2rem 0", width: "100%" }}>
+    <Box sx={{ padding: "2rem 0", width: "100%", px: { xs: 1.5, md: 1 } }}>
       <Typography variant="h5" gutterBottom>
         Skills & Technologies
       </Typography>
 
-      <Stack spacing={5}>
+      <Stack spacing={4}>
         {skillCategories.map((category) => (
-          <Box key={category.key}>
+          <Box key={category.key} sx={{ width: "100%", px: { xs: 0.75, md: 0.5 } }}>
             <Stack
               direction={{ xs: "column", sm: "row" }}
               spacing={1.5}
@@ -40,7 +40,7 @@ const Skills: React.FC = () => {
               />
             </Stack>
 
-            <Grid container spacing={2}>
+            <Grid container spacing={2} sx={{ width: "100%", justifyContent: "center" }}>
               {category.skills.map((skill) => (
                 <Grid item xs={12} sm={6} md={4} key={skill.key}>
                   <SkillItem

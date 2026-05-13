@@ -1,7 +1,7 @@
 'use client';
 
 import React from "react";
-import { Box, Typography, Paper, useTheme } from "@mui/material";
+import { Box, Typography, Paper, Stack, useTheme } from "@mui/material";
 import * as Icons from "@mui/icons-material";
 import { getGlassSurfaceStyles } from "../../styles/glass.styles";
 
@@ -58,7 +58,7 @@ const SkillItem: React.FC<SkillItemProps> = ({ skillKey, title, description }) =
       sx={{
         padding: "1rem 1.1rem",
         display: "flex",
-        alignItems: "center",
+        alignItems: "flex-start",
         gap: "1rem",
         transition: "transform 0.25s ease, box-shadow 0.25s ease",
         height: "100%",
@@ -67,7 +67,7 @@ const SkillItem: React.FC<SkillItemProps> = ({ skillKey, title, description }) =
         },
         ...getGlassSurfaceStyles(theme),
       }}
-    >
+      >
       <Box
         sx={{
           width: "2.75rem",
@@ -85,14 +85,14 @@ const SkillItem: React.FC<SkillItemProps> = ({ skillKey, title, description }) =
       >
         <IconComponent sx={{ fontSize: "1.7rem", color: "primary.main" }} />
       </Box>
-      <Box sx={{ flexGrow: 1, minWidth: 0 }}>
-        <Typography variant="h6" sx={{ lineHeight: 1.2, textAlign: "center" }}>
+      <Stack sx={{ flexGrow: 1, minWidth: 0, pt: 0.45 }} spacing={0.6}>
+        <Typography variant="h6" sx={{ lineHeight: 1.2, textAlign: "left" }}>
           {title}
         </Typography>
-        <Typography variant="body2" sx={{ mt: 0.75, color: "text.secondary", textAlign: "left" }}>
+        <Typography variant="body2" sx={{ color: "text.secondary", textAlign: "left" }}>
           {description}
         </Typography>
-      </Box>
+      </Stack>
     </Paper>
   );
 };

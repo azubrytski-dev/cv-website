@@ -1,7 +1,8 @@
 'use client';
 
 import React, { useEffect, useState } from "react";
-import { Avatar, Typography, Box, Paper, IconButton, Stack, useTheme } from "@mui/material";
+import { Avatar, Typography, Paper, IconButton, Stack, Button, useTheme } from "@mui/material";
+import { alpha } from "@mui/material/styles";
 import { Contact } from "../models/Contact";
 import { getContactInfodmation } from "../services/portfolio.service";
 import { getGlassSurfaceStyles } from "../styles/glass.styles";
@@ -10,6 +11,7 @@ import EmailIcon from "@mui/icons-material/Email";
 import GitHubIcon from "@mui/icons-material/GitHub";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
+import DownloadIcon from "@mui/icons-material/Download";
 
 const Header: React.FC = () => {
   const [contact, setContact] = useState<Contact | null>(null);
@@ -63,6 +65,68 @@ const Header: React.FC = () => {
           <LinkedInIcon />
         </IconButton>
       </Stack>
+
+      <Button
+        component="a"
+        href="/api/cv"
+        download="andrei-zubrytski-cv.pdf"
+        variant="outlined"
+        startIcon={<DownloadIcon />}
+        sx={{
+          mt: 3,
+          minWidth: 240,
+          px: 3.5,
+          py: 1.3,
+          borderRadius: 999,
+          textTransform: "none",
+          fontSize: "0.98rem",
+          fontWeight: 700,
+          letterSpacing: "0.02em",
+          color: theme.palette.text.primary,
+          background: "transparent",
+          backgroundImage: "none",
+          backgroundColor: "transparent",
+          boxShadow: "none",
+          backdropFilter: "blur(12px) saturate(130%)",
+          WebkitBackdropFilter: "blur(12px) saturate(130%)",
+          border: `1px solid ${
+            theme.palette.mode === "dark"
+              ? alpha(theme.palette.common.white, 0.12)
+              : alpha(theme.palette.primary.main, 0.16)
+          }`,
+          transition: "transform 180ms ease, border-color 180ms ease, background-color 180ms ease",
+          '&&': {
+            background: "transparent",
+            backgroundImage: "none",
+            boxShadow: "none",
+          },
+          "&:hover": {
+            transform: "none",
+            backgroundColor:
+              theme.palette.mode === "dark"
+                ? "transparent"
+                : "transparent",
+            borderColor:
+              theme.palette.mode === "dark"
+                ? alpha(theme.palette.primary.main, 0.34)
+                : alpha(theme.palette.primary.main, 0.28),
+          },
+          '&&:hover': {
+            background: "transparent",
+            backgroundImage: "none",
+            boxShadow: "none",
+            transform: "none",
+          },
+          "& .MuiButton-startIcon": {
+            mr: 1.25,
+            "& svg": {
+              fontSize: "1.1rem",
+            },
+          },
+        }}
+      >
+        Download CV
+      </Button>
     </Paper>
   );
 };
