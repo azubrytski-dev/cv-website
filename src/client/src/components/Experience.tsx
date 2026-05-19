@@ -127,36 +127,87 @@ const Experience: React.FC = () => {
         ))}
       </Grid>
 
-      <Dialog open={open} onClose={handleClose} maxWidth="sm" fullWidth>
-        <DialogTitle sx={{ color: "text.secondary", textAlign: "center" }}>
+      <Dialog
+        open={open}
+        onClose={handleClose}
+        maxWidth="sm"
+        fullWidth
+        PaperProps={{
+          sx: (theme) => ({
+            borderRadius: 4,
+            background:
+              theme.palette.mode === 'dark'
+                ? 'linear-gradient(180deg, rgba(10, 12, 11, 0.96), rgba(6, 8, 8, 0.92))'
+                : 'linear-gradient(180deg, rgba(255,255,255,0.94), rgba(248,250,252,0.98))',
+            border:
+              theme.palette.mode === 'dark'
+                ? '1px solid rgba(13,255,158,0.12)'
+                : '1px solid rgba(25,118,210,0.14)',
+            backdropFilter: 'blur(18px) saturate(145%)',
+            WebkitBackdropFilter: 'blur(18px) saturate(145%)',
+            boxShadow:
+              theme.palette.mode === 'dark'
+                ? '0 20px 52px rgba(0,0,0,0.42), inset 0 1px 0 rgba(255,255,255,0.04)'
+                : '0 20px 52px rgba(25,118,210,0.10), inset 0 1px 0 rgba(255,255,255,0.55)',
+          }),
+        }}
+      >
+        <DialogTitle
+          sx={(theme) => ({
+            color: theme.palette.mode === 'dark' ? 'rgba(238,238,238,0.96)' : 'text.primary',
+            textAlign: 'center',
+            pb: 0.75,
+          })}
+        >
           {selectedExperience?.company} - {selectedExperience?.role}
         </DialogTitle>
         {selectedExperience && (
           <Typography
             variant="subtitle2"
             align="center"
-            sx={{ color: "text.secondary", fontWeight: 400, mb: 1 }}
+            sx={{ color: 'text.secondary', fontWeight: 400, mb: 1.5, px: 3 }}
           >
             {selectedExperience.startDate} - {selectedExperience.endDate}
             {` (` + calculateDuration(selectedExperience.startDate, selectedExperience.endDate) + `)`}
           </Typography>
         )}
-        <DialogContent dividers>
+        <DialogContent
+          dividers
+          sx={(theme) => ({
+            px: 3,
+            py: 2.5,
+            borderTopColor: theme.palette.mode === 'dark' ? 'rgba(255,255,255,0.06)' : 'rgba(127,127,127,0.18)',
+            borderBottomColor: theme.palette.mode === 'dark' ? 'rgba(255,255,255,0.06)' : 'rgba(127,127,127,0.18)',
+          })}
+        >
           {selectedExperience && (
-            <Box>
-              <Typography variant="body1" gutterBottom>
+            <Box
+              sx={(theme) => ({
+                p: 2.5,
+                borderRadius: 3,
+                border: theme.palette.mode === 'dark'
+                  ? '1px solid rgba(13,255,158,0.10)'
+                  : '1px solid rgba(25,118,210,0.12)',
+                backgroundColor: theme.palette.mode === 'dark'
+                  ? 'rgba(255,255,255,0.03)'
+                  : 'rgba(255,255,255,0.6)',
+                backdropFilter: 'blur(14px) saturate(140%)',
+                WebkitBackdropFilter: 'blur(14px) saturate(140%)',
+              })}
+            >
+              <Typography variant="body1" gutterBottom sx={{ color: 'text.secondary' }}>
                 Description:
               </Typography>
-              <Typography variant="body2" gutterBottom>
+              <Typography variant="body2" gutterBottom sx={{ lineHeight: 1.7 }}>
                 {selectedExperience.description}
               </Typography>
-              <Typography variant="body1" gutterBottom>
+              <Typography variant="body1" gutterBottom sx={{ color: 'text.secondary', mt: 2 }}>
                 Tech Stack:
               </Typography>
               <Typography variant="body2" gutterBottom>
                 {selectedExperience.techStack}
               </Typography>
-              <Typography variant="body1" gutterBottom>
+              <Typography variant="body1" gutterBottom sx={{ color: 'text.secondary', mt: 2 }}>
                 Responsibilities:
               </Typography>
               <List dense>
@@ -171,7 +222,39 @@ const Experience: React.FC = () => {
           )}
         </DialogContent>
         <DialogActions>
-          <Button onClick={handleClose} color="primary" sx={{ color: "black" }}>
+          <Button
+            onClick={handleClose}
+            variant="outlined"
+            sx={(theme) => ({
+              textTransform: 'none',
+              fontWeight: 800,
+              borderRadius: 999,
+              minWidth: 124,
+              py: 1,
+              px: 2.5,
+              backgroundImage: 'none',
+              borderWidth: 1,
+              borderStyle: 'solid',
+              color: theme.palette.mode === 'dark' ? 'common.white' : '#111111',
+              borderColor: theme.palette.mode === 'dark' ? 'rgba(13,255,158,0.22)' : 'rgba(25,118,210,0.42)',
+              backgroundColor: theme.palette.mode === 'dark' ? 'rgba(255,255,255,0.04)' : 'rgba(255,255,255,0.16)',
+              backdropFilter: 'blur(14px) saturate(155%)',
+              WebkitBackdropFilter: 'blur(14px) saturate(155%)',
+              boxShadow:
+                theme.palette.mode === 'dark'
+                  ? '0 0 0 1px rgba(13,255,158,0.08), 0 8px 18px rgba(0,0,0,0.14)'
+                  : '0 0 0 1px rgba(25,118,210,0.05), 0 8px 18px rgba(25,118,210,0.08)',
+              '&:hover': {
+                backgroundImage: 'none',
+                boxShadow:
+                  theme.palette.mode === 'dark'
+                    ? '0 0 0 1px rgba(13,255,158,0.10), 0 10px 20px rgba(0,0,0,0.16)'
+                    : '0 0 0 1px rgba(25,118,210,0.08), 0 10px 20px rgba(25,118,210,0.10)',
+                backgroundColor: theme.palette.mode === 'dark' ? 'rgba(255,255,255,0.06)' : 'rgba(255,255,255,0.26)',
+                borderColor: theme.palette.mode === 'dark' ? 'rgba(13,255,158,0.30)' : 'rgba(25,118,210,0.58)',
+              },
+            })}
+          >
             Close
           </Button>
         </DialogActions>

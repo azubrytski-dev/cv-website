@@ -14,7 +14,7 @@ export const getGlassSurfaceStyles = (theme: Theme, accent = '0 255 255') => {
     border: `1px solid ${borderColor}`,
     boxShadow: `0 18px 40px rgba(${shadowColor}, 0.10), inset 0 1px 0 rgba(255, 255, 255, 0.08)`,
     position: 'relative',
-    overflow: 'hidden',
+    overflow: 'visible',
     '& > *': {
       position: 'relative',
       zIndex: 1,
@@ -24,6 +24,7 @@ export const getGlassSurfaceStyles = (theme: Theme, accent = '0 255 255') => {
       position: 'absolute',
       inset: 0,
       background: `radial-gradient(circle at top left, rgba(${accent}, 0.12), transparent 45%)`,
+      borderRadius: 'inherit',
       pointerEvents: 'none',
     },
   };
