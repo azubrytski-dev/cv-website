@@ -85,7 +85,6 @@ export const darkTheme = createTheme({
       styleOverrides: {
         root: {
           borderRadius: '0.75rem',
-          overflow: 'hidden',
         },
       },
     },
@@ -166,7 +165,6 @@ export const lightTheme = createTheme({
       styleOverrides: {
         root: {
           borderRadius: '0.75rem',
-          overflow: 'hidden',
         },
       },
     },
