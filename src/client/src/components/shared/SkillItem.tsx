@@ -77,10 +77,7 @@ const SkillItem: React.FC<SkillItemProps> = ({ skillKey, title, description }) =
           alignItems: "center",
           justifyContent: "center",
           flexShrink: 0,
-          background:
-            theme.palette.mode === "dark"
-              ? "rgba(0, 255, 255, 0.08)"
-              : "rgba(25, 118, 210, 0.08)",
+          background: "rgb(var(--cv-accent-rgb) / 8%)",
         }}
       >
         <IconComponent sx={{ fontSize: "1.7rem", color: "primary.main" }} />

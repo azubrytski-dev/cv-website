@@ -14,7 +14,6 @@ const About: React.FC = () => {
         padding: '1.5rem',
         textAlign: 'left',
         width: '100%',
-        borderRadius: '0.75rem',
         ...getGlassSurfaceStyles(theme),
       }}
       >

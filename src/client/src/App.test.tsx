@@ -1,67 +1,36 @@
-import React from 'react';
-import { render, screen } from '@testing-library/react';
+import { fireEvent, render, screen, within } from '@testing-library/react';
 import App from './App';
 
-jest.mock('react-router-dom', () => {
-  const React = require('react');
-
-  return {
-    Route: () => null,
-    Routes: ({ children }: { children: React.ReactNode }) => {
-      const pathname = global.location.pathname;
-      const route = React.Children.toArray(children).find((child: any) => {
-        if (!React.isValidElement(child)) {
-          return false;
-        }
-
-        if (child.props.path === '/') {
-          return pathname === '/';
-        }
-
-        return child.props.path === pathname;
-      });
-
-      return <>{route ? route.props.element : null}</>;
-    },
-    NavLink: ({ children }: { children: React.ReactNode }) => <>{children}</>,
-  };
-}, { virtual: true });
-
-jest.mock('./components/Navbar', () => {
-  return function MockNavbar() {
-    return <div data-testid="navbar">navbar</div>;
+jest.mock('./components/PortfolioGrid', () => {
+  return function MockPortfolioGrid() {
+    return <div>CV content</div>;
   };
 });
 
-jest.mock('./views/AboutMe', () => {
-  return function MockAboutMe() {
-    return <div>about-me-page</div>;
-  };
+beforeEach(() => {
+  window.matchMedia = jest.fn().mockImplementation((query) => ({
+    matches: true,
+    media: query,
+    addEventListener: jest.fn(),
+    removeEventListener: jest.fn(),
+  }));
 });
 
-jest.mock('./views/Beats', () => {
-  return function MockBeats() {
-    return <div>beats-page</div>;
-  };
+it('shows only CV navigation and content', () => {
+  render(<App />);
+
+  const navigation = screen.getByRole('navigation', { name: 'Main navigation' });
+  expect(within(navigation).getAllByRole('link').map(link => link.getAttribute('href'))).toEqual(['/', '#overview', '#experience', '#skills', '#education']);
+  expect(within(navigation).getByRole('link', { name: 'Andrei Zubrytski' })).toHaveAttribute('href', '/');
+  expect(within(screen.getByRole('main')).getByText('CV content')).toBeInTheDocument();
 });
 
-describe('App routing', () => {
-  it('renders the about page on the home route', () => {
-    window.history.pushState({}, '', '/');
+it('switches the shared theme without leaving the CV', () => {
+  const { container } = render(<App />);
+  const themeScope = container.querySelector('[data-cv-theme]');
+  expect(themeScope).toHaveAttribute('data-cv-theme', 'dark');
 
-    render(
-      <App />
-    );
-
-    expect(screen.getByTestId('navbar')).toBeInTheDocument();
-    expect(screen.getByText('about-me-page')).toBeInTheDocument();
-  });
-
-  it('renders the beats page on the beats route', () => {
-    window.history.pushState({}, '', '/beats');
-
-    render(<App />);
-
-    expect(screen.getByText('beats-page')).toBeInTheDocument();
-  });
+  fireEvent.click(screen.getByRole('button', { name: 'toggle theme' }));
+  expect(themeScope).toHaveAttribute('data-cv-theme', 'light');
+  expect(screen.getByText('CV content')).toBeInTheDocument();
 });

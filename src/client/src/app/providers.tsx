@@ -4,6 +4,9 @@ import React from 'react';
 import type { ReactNode } from 'react';
 import { Box, Container, CssBaseline, ThemeProvider } from '@mui/material';
 import Navbar from '../components/Navbar';
+import ContactFooter from '../components/ContactFooter';
+import SectionNavigation from '../components/SectionNavigation';
+import { useSectionNavigation } from '../hooks/useSectionNavigation';
 import { darkTheme, lightTheme } from '../themes/themes';
 
 export default function Providers({
@@ -12,6 +15,7 @@ export default function Providers({
   children: ReactNode;
 }>) {
   const [isDarkMode, setIsDarkMode] = React.useState(true);
+  const { activeSection, navigateToSection } = useSectionNavigation();
 
   const currentTheme = isDarkMode ? darkTheme : lightTheme;
 
@@ -23,22 +27,23 @@ export default function Providers({
     <ThemeProvider theme={currentTheme}>
       <CssBaseline />
       <Box
-        className={isDarkMode ? 'dark-theme' : 'light-theme'}
+        className="cv-site"
+        data-cv-theme={isDarkMode ? 'dark' : 'light'}
         sx={{
           minHeight: '100vh',
-          '--navbar-height': { xs: '4.05rem', md: '4.25rem' },
+          '@supports (min-height: 100dvh)': { minHeight: '100dvh' },
+          display: 'flex',
+          flexDirection: 'column',
         }}
       >
-        <Navbar isDarkMode={isDarkMode} onToggleTheme={handleThemeToggle} />
-        <Container
-          sx={{
-            textAlign: 'center',
-            pt: 'calc(var(--navbar-height, 4.75rem) + env(safe-area-inset-top, 0px))',
-            pb: 4,
-          }}
-        >
-          {children}
-        </Container>
+        <Navbar isDarkMode={isDarkMode} onToggleTheme={handleThemeToggle} activeSection={activeSection} onNavigate={navigateToSection} />
+        <Box className="cv-content-shell cv-frame">
+          <SectionNavigation activeSection={activeSection} onNavigate={navigateToSection} />
+          <Container maxWidth={false} disableGutters component="main" sx={{ minWidth: 0 }}>
+            {children}
+          </Container>
+        </Box>
+        <ContactFooter />
       </Box>
     </ThemeProvider>
   );

@@ -3,7 +3,7 @@ import type { ReactNode } from 'react';
 import '../index.css';
 import '../styles/global.scss';
 import '../styles/Navbar.scss';
-import '../styles/FlipCard.scss';
+import '../styles/Layout.scss';
 import Providers from './providers';
 
 export const metadata: Metadata = {
