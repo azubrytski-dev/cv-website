@@ -26,7 +26,9 @@ npm run dev
 
 Open http://localhost:3000. Run `npm run build`, `npm run typecheck`, `npm run lint`, and `npm test` from the root. Tests use Jest with the Next.js compiler (`next/jest`), including keyboard activation and focus restoration for experience dialogs. Workspace scripts can also be run directly, for example `npm run typecheck --workspace=@cv/blog`.
 
-For deployment, use the repository root as the install directory, `npm run build` as the build command, and `npm start` as the start command. The Next.js application itself remains in `src/client`; deployment must include the sibling design-system workspace.
+For Vercel, keep **Root Directory** set to `src/client` and the **Framework Preset** set to Next.js. Include the sibling workspace source files in the build. `src/client/vercel.json` sets the install command to `npm ci --include=dev --include-workspace-root` and the build command to `npm run build`; retain the default Next.js output directory.
+
+The install flags are required because ESLint, TypeScript, Sass, and the shared type/test tooling are development dependencies of the workspace root. They must be present during builds, including production-mode installs started from `src/client`. The configuration uses the repository's npm lockfile and keeps build-time lint/type checks enabled. For other hosts, install from the repository root with development dependencies included, build with `npm run build`, and serve with `npm start`.
 
 ## CV layout
 
