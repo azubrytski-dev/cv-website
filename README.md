@@ -1,42 +1,55 @@
 # CV Website
 
-Personal CV / portfolio site for Andrei Zubrytski.
+Personal CV / portfolio for Andrei Zubrytski. The Next.js app in `src/client` serves only the CV and its PDF download.
 
-The app now lives in `src/client` and uses Next.js App Router with React, MUI, and TypeScript.
+## Projects
 
-## Project Structure
+This repository uses npm workspaces with one root lockfile:
 
-- `src/client/src/app` - Next.js routes and root layout
-- `src/client/src/components` - reusable UI sections and cards
-- `src/client/src/models` - portfolio data models and mock data
-- `src/client/src/services` - data access helpers
-- `src/client/src/styles` - global styles and shared visual utilities
+| Folder | Package | Purpose |
+| --- | --- | --- |
+| `src/client` | `cv-website` | CV website: profile, skills, experience, education, PDF export |
+| `src/blog` | `@cv/blog` | Optional blog UI, markdown content, and server loaders |
+| `src/beats` | `@cv/beats` | Optional beats UI and original design references |
+| `src/design-system` | `@cv/design-system` | Shared style tokens, MUI themes, and neutral surfaces |
 
-## Running Locally
+Blog and beats are separate source packages. They have no routes or navigation links in the CV app and are not imported by it. Each package has its own manifest and TypeScript configuration; neither depends on CV components or data.
 
-From the repository root:
+## Development
+
+Install from the repository root (Node.js 20+):
 
 ```bash
-cd src/client
-npm install
+npm ci
 npm run dev
 ```
 
-Open `http://localhost:3000`.
+Open http://localhost:3000. Run `npm run build`, `npm run typecheck`, `npm run lint`, and `npm test` from the root. Tests use Jest with the Next.js compiler (`next/jest`), including keyboard activation and focus restoration for experience dialogs. Workspace scripts can also be run directly, for example `npm run typecheck --workspace=@cv/blog`.
 
-## Available Scripts
+For deployment, use the repository root as the install directory, `npm run build` as the build command, and `npm start` as the start command. The Next.js application itself remains in `src/client`; deployment must include the sibling design-system workspace.
 
-Run these from `src/client`:
+## CV layout
 
-```bash
-npm run dev
-npm run build
-npm start
-npm test -- --watchAll=false
-```
+The page presents an open introduction, a role timeline with inline contributions and explicit details buttons, compact skill groups, education rows, and a fixed, single-line contact footer. A desktop section rail (1200px and wider) tracks headings at 25% of the usable viewport with IntersectionObserver and frame-throttled geometry checks; smaller screens retain compact section links in the fixed header. Shared layout tokens reserve space for the header, footer, and rail, including mobile safe areas. Existing career and education records remain the content source.
 
-## Notes
+## Shared styling
 
-- The app is currently using local mock data for portfolio content.
-- The design uses glass-style surfaces and a category-based skills layout.
-- When deploying to Vercel, point the project root to `src/client`.
+`src/design-system/src/tokens.ts` is the source of truth for colors, fonts, radii, motion, and layout values. `createSiteTheme(mode)` derives the MUI theme and namespaced `--cv-*` CSS properties from those tokens. The CV app installs the theme through `ThemeProvider` and `CssBaseline` and switches both together.
+
+Reusable modules inherit the host MUI theme and CSS properties. They do not install global resets, hardcode dark/light palettes, or create a second theme provider. See [the design-system contract](src/design-system/README.md).
+
+## Adding optional modules later
+
+See [blog integration](src/blog/README.md) and [beats integration](src/beats/README.md). The route files under each package's `examples/` folder are inactive examples; copy them into the CV route tree only when enabling that module.
+
+Portfolio data remains local to the CV app. Generated build output is ignored and should be recreated during deployment.
+
+## Downloadable CV
+
+`src/client/src/data/cv.ts` is the presentation-independent CV source shared by the introduction, skill groups, experience dialogs and PDF. Experience and education records live in their existing model files and are composed into this source; contact details are defined in the shared data module.
+
+`/api/cv` generates a text-based A4 PDF using PDFKit, with embedded, openly licensed Lato fonts in `src/client/public/fonts`. It uses a fixed print palette, independent of the website theme and viewport. The current content occupies two pages; recent positions retain three bullets and older positions use two. Roles stay together, and section headings remain with their opening content. The download filename remains `andrei-zubrytski-cv.pdf`.
+
+The hero uses the separate transparent waist-up asset in `src/client/src/shared/img/hero-portrait.webp`, generated from the selected photo reference. The source head crop remains available separately.
+
+Scrollspy never writes a hash during passive scrolling. Hash-free visits reset to Overview at the top, while intentional section deep links remain supported. Manual candidates stabilize for 120ms, and clicked destinations stay highlighted during smooth scrolling until completion or user interruption.

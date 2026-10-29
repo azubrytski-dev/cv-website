@@ -1,0 +1,38 @@
+{
+  "name": "cv-projects",
+  "version": "0.1.0",
+  "private": true,
+  "workspaces": [
+    "src/client",
+    "src/design-system",
+    "src/blog",
+    "src/beats"
+  ],
+  "scripts": {
+    "dev": "npm run dev --workspace=cv-website",
+    "build": "npm run build --workspace=cv-website",
+    "start": "npm start --workspace=cv-website",
+    "test": "npm test --workspace=cv-website -- --runInBand",
+    "typecheck": "npm run typecheck --workspaces --if-present",
+    "lint": "npm run lint --workspace=cv-website"
+  },
+  "devDependencies": {
+    "@eslint/eslintrc": "^3.3.1",
+    "@testing-library/jest-dom": "^6.6.3",
+    "@testing-library/react": "^16.2.0",
+    "@testing-library/user-event": "^14.6.1",
+    "@types/jest": "^30.0.0",
+    "@types/node": "^22.10.10",
+    "@types/pdfkit": "^0.17.7",
+    "@types/react": "^19.0.8",
+    "@types/react-dom": "^19.0.3",
+    "@typescript-eslint/eslint-plugin": "^8.46.0",
+    "@typescript-eslint/parser": "^8.46.0",
+    "eslint": "^9.39.0",
+    "eslint-config-next": "^15.5.18",
+    "jest": "^30.2.0",
+    "jest-environment-jsdom": "^30.2.0",
+    "sass": "^1.84.0",
+    "typescript": "^5.9.3"
+  }
+}

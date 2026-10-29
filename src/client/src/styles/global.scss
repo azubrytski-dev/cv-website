@@ -1,96 +1,17 @@
-@import 'variables';
-
-body {
-  font-family: var(--font-primary);
-  transition: background-color 0.3s ease-in-out;
+html {
+  scroll-padding-bottom: calc(var(--cv-footer-height) + env(safe-area-inset-bottom, 0px) + 1.5rem);
+  scroll-padding-top: calc(var(--cv-navbar-height) + env(safe-area-inset-top, 0px) + 1.5rem);
 }
 
-.dark-theme {
-  background-color: var(--dark-bg);
-  color: var(--dark-text-primary);
-  background-image: radial-gradient(circle at top, rgba(0, 255, 255, 0.12), transparent 30%),
-    linear-gradient(180deg, rgba(255, 255, 255, 0.02), transparent 45%);
+.cv-site {
+  background-color: var(--cv-color-background);
+  color: var(--cv-color-text);
+}
 
-  --nav-bg: var(--dark-bg);
-  --nav-border: var(--dark-paper);
-  --nav-text-primary: var(--dark-text-primary);
-  --nav-text-secondary: var(--dark-text-secondary);
-  --link-color: #33ffb1;
-
-  a {
-    color: var(--link-color);
+@media (max-width: 768px) {
+  :root,
+  [data-cv-theme] {
+    --cv-navbar-height: var(--cv-navbar-height-mobile) !important;
+    --cv-footer-height: var(--cv-footer-height-mobile) !important;
   }
-
-  a:hover {
-    color: var(--dark-primary);
-  }
-}
-
-.light-theme {
-  background-color: var(--light-bg);
-  color: var(--light-text-primary);
-  background-image: radial-gradient(circle at top, rgba(25, 118, 210, 0.08), transparent 28%),
-    linear-gradient(180deg, rgba(255, 255, 255, 0.34), transparent 45%);
-
-  --nav-bg: var(--light-bg);
-  --nav-border: var(--light-paper);
-  --nav-text-primary: var(--light-text-primary);
-  --nav-text-secondary: var(--light-text-secondary);
-  --link-color: #4aa3ff;
-
-  a {
-    color: var(--link-color);
-  }
-
-  a:hover {
-    color: var(--light-primary);
-  }
-}
-
-.button {
-  text-transform: uppercase;
-  border-radius: 0.5rem;
-  padding: 0.625rem 1.25rem;
-  font-weight: bold;
-  transition: 0.3s ease-in-out;
-}
-
-.dark-button {
-  background: var(--dark-gradient);
-  box-shadow: var(--dark-button-shadow);
-  padding: 0.75rem 1.5rem;
-  border-radius: 0.625rem;
-
-  &:hover {
-    box-shadow: var(--dark-hover-shadow);
-    transform: scale(1.05);
-  }
-}
-
-.light-button {
-  background: var(--light-gradient);
-  box-shadow: var(--light-button-shadow);
-  padding: 0.75rem 1.5rem;
-  border-radius: 0.625rem;
-
-  &:hover {
-    box-shadow: var(--light-hover-shadow);
-    transform: scale(1.05);
-  }
-}
-
-.card {
-  border-radius: 0.75rem;
-  padding: 1rem;
-  transition: box-shadow 0.3s ease-in-out;
-}
-
-.dark-card {
-  background-color: var(--dark-paper);
-  box-shadow: var(--dark-card-shadow);
-}
-
-.light-card {
-  background-color: var(--light-paper);
-  box-shadow: var(--light-card-shadow);
 }

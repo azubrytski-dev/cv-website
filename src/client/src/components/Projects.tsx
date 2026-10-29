@@ -18,7 +18,7 @@ import { calculateDuration } from "../utils/string.utils";
 
 const ProjectsTableContainer = styled(TableContainer)(({ theme }) => ({
   margin: "1.25rem 0",
-  borderRadius: "0.75rem",
+  borderRadius: "var(--cv-radius-card)",
 }));
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({

@@ -4,9 +4,9 @@ export const runtime = 'nodejs';
 export const dynamic = 'force-dynamic';
 
 export async function GET() {
-  const pdf = createCvPdf();
+  const pdf = await createCvPdf();
 
-  return new Response(pdf, {
+  return new Response(new Uint8Array(pdf), {
     headers: {
       'Content-Type': 'application/pdf',
       'Content-Disposition': 'attachment; filename="andrei-zubrytski-cv.pdf"',

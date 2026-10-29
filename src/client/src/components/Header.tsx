@@ -1,134 +1,49 @@
 'use client';
 
-import React, { useEffect, useState } from "react";
-import { Avatar, Typography, Paper, IconButton, Stack, Button, useTheme } from "@mui/material";
-import { alpha } from "@mui/material/styles";
-import { Contact } from "../models/Contact";
-import { getContactInfodmation } from "../services/portfolio.service";
-import { getGlassSurfaceStyles } from "../styles/glass.styles";
-import PhoneIcon from "@mui/icons-material/Phone";
-import EmailIcon from "@mui/icons-material/Email";
-import GitHubIcon from "@mui/icons-material/GitHub";
-import LocationOnIcon from "@mui/icons-material/LocationOn";
-import LinkedInIcon from "@mui/icons-material/LinkedIn";
-import DownloadIcon from "@mui/icons-material/Download";
+import { Box, Button, Typography } from '@mui/material';
+import DownloadOutlinedIcon from '@mui/icons-material/DownloadOutlined';
+import MailOutlineIcon from '@mui/icons-material/MailOutline';
+import LocationOnOutlinedIcon from '@mui/icons-material/LocationOnOutlined';
+import heroPortrait from '../shared/img/hero-portrait.webp';
+import { cvData } from '../data/cv';
+import { getContactInfodmation } from '../services/portfolio.service';
 
-const Header: React.FC = () => {
-  const [contact, setContact] = useState<Contact | null>(null);
-  const theme = useTheme();
-
-  useEffect(() => {
-    setContact(getContactInfodmation());
-  }, []);
-
-  if (!contact) return <Typography>Loading...</Typography>;
+export default function Header() {
+  const contact = getContactInfodmation();
 
   return (
-    <Paper
-      elevation={3}
-      sx={{
-        padding: "1.5rem",
-        textAlign: "center",
-        width: "100%",
-        borderRadius: "0.75rem",
-        ...getGlassSurfaceStyles(theme),
-      }}
-    >
-      <Avatar
-        alt={contact.name}
-        src={contact.avatar}
-        sx={{ width: "7rem", height: "7rem", margin: "auto" }}
+    <Box component="section" id="overview" aria-labelledby="introduction-title" sx={{ display: 'grid', gridTemplateColumns: { xs: '1fr', sm: 'minmax(0, 1fr) 200px', md: 'minmax(0, 1fr) minmax(260px, 34%)' }, gap: { xs: 2, sm: 4 }, alignItems: 'center' }}>
+      <Box sx={{ minWidth: 0 }}>
+        <Typography id="introduction-title" component="h1" variant="h1">{contact.name}</Typography>
+        <Typography sx={{ mt: 1.25, fontSize: { xs: '1.125rem', md: '1.375rem' }, fontWeight: 500, color: 'text.secondary' }}>
+          {contact.title}
+        </Typography>
+        <Typography sx={{ mt: 2.5, maxWidth: '42rem' }}>
+          {cvData.summary}
+        </Typography>
+        <Typography variant="body2" color="text.secondary" sx={{ display: 'flex', alignItems: 'center', gap: 0.75, mt: 2 }}>
+          <LocationOnOutlinedIcon sx={{ fontSize: '1rem' }} /> {contact.location}
+        </Typography>
+        <Box sx={{ display: 'flex', gap: 'var(--cv-control-gap)', flexWrap: 'wrap', mt: 3 }}>
+          <Button component="a" href="/api/cv" download="andrei-zubrytski-cv.pdf" variant="contained" startIcon={<DownloadOutlinedIcon />}>
+            Download CV
+          </Button>
+          <Button component="a" href={`mailto:${contact.email}`} variant="outlined" startIcon={<MailOutlineIcon />}>
+            Email me
+          </Button>
+        </Box>
+        <Typography variant="caption" color="text.secondary" sx={{ display: 'block', mt: 2.5 }}>
+          Outside work: practical AI tooling, travel, and music.
+        </Typography>
+      </Box>
+      <Box
+        component="img"
+        alt={`${contact.name}, waist-up illustrated portrait`}
+        src={heroPortrait.src}
+        width={heroPortrait.width}
+        height={heroPortrait.height}
+        sx={{ display: 'block', width: { xs: 136, sm: '100%' }, maxWidth: '100%', height: 'auto', justifySelf: { xs: 'end', sm: 'center' }, alignSelf: 'end' }}
       />
-      <Typography variant="h5" gutterBottom>
-        {contact.name}
-      </Typography>
-      <Typography variant="h6" component="h2" color="textSecondary" gutterBottom>
-        {contact.title}
-      </Typography>
-
-      <Typography variant="body2" sx={{ display: "flex", justifyContent: "center", alignItems: "center", gap: "0.5rem" }}>
-        <LocationOnIcon fontSize="small" /> {contact.location}
-      </Typography>
-
-      {/* Icons for Contact Links */}
-      <Stack direction="row" sx={{ marginTop: "1rem", display: "flex", justifyContent: "center", gap: "1rem" }}>
-        <IconButton component="a" href={`tel:${contact.phone}`} color="primary">
-          <PhoneIcon />
-        </IconButton>
-        <IconButton component="a" href={`mailto:${contact.email}`} color="primary">
-          <EmailIcon />
-        </IconButton>
-        <IconButton component="a" href={contact.github} target="_blank" rel="noopener noreferrer" color="primary">
-          <GitHubIcon />
-        </IconButton>
-        <IconButton component="a" href={contact.linkedin} target="_blank" rel="noopener noreferrer" color="primary">
-          <LinkedInIcon />
-        </IconButton>
-      </Stack>
-
-      <Button
-        component="a"
-        href="/api/cv"
-        download="andrei-zubrytski-cv.pdf"
-        variant="outlined"
-        startIcon={<DownloadIcon />}
-        sx={{
-          mt: 3,
-          minWidth: 240,
-          px: 3.5,
-          py: 1.3,
-          borderRadius: 999,
-          textTransform: "none",
-          fontSize: "0.98rem",
-          fontWeight: 700,
-          letterSpacing: "0.02em",
-          color: theme.palette.text.primary,
-          background: "transparent",
-          backgroundImage: "none",
-          backgroundColor: "transparent",
-          boxShadow: "none",
-          backdropFilter: "blur(12px) saturate(130%)",
-          WebkitBackdropFilter: "blur(12px) saturate(130%)",
-          border: `1px solid ${
-            theme.palette.mode === "dark"
-              ? alpha(theme.palette.common.white, 0.12)
-              : alpha(theme.palette.primary.main, 0.16)
-          }`,
-          transition: "transform 180ms ease, border-color 180ms ease, background-color 180ms ease",
-          '&&': {
-            background: "transparent",
-            backgroundImage: "none",
-            boxShadow: "none",
-          },
-          "&:hover": {
-            transform: "none",
-            backgroundColor:
-              theme.palette.mode === "dark"
-                ? "transparent"
-                : "transparent",
-            borderColor:
-              theme.palette.mode === "dark"
-                ? alpha(theme.palette.primary.main, 0.34)
-                : alpha(theme.palette.primary.main, 0.28),
-          },
-          '&&:hover': {
-            background: "transparent",
-            backgroundImage: "none",
-            boxShadow: "none",
-            transform: "none",
-          },
-          "& .MuiButton-startIcon": {
-            mr: 1.25,
-            "& svg": {
-              fontSize: "1.1rem",
-            },
-          },
-        }}
-      >
-        Download CV
-      </Button>
-    </Paper>
+    </Box>
   );
-};
-
-export default Header;
+}
