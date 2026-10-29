@@ -2,9 +2,9 @@
 
 Optional beats source package, disconnected from the CV website.
 
-`src/Beats.tsx` exports a themed collection placeholder. It uses MUI and the host's shared style tokens. The original React view (`docs/Beats.original.tsx`), design template, and implementation notes are preserved in `docs/`; no Tailwind runtime or global styles are required by the exported component.
+`src/Beats.tsx` exports a themed collection placeholder. It uses MUI and the host's shared style tokens. The original React view (`docs/Beats.original.tsx`), its supporting demo components, design templates, and implementation notes are preserved in `docs/`; no Tailwind runtime or global styles are required by the exported component. See [the demo reference notes](docs/README.md).
 
-No tracks or audio sources were supplied. Player controls remain a future feature described by the design references.
+No production tracks or audio sources were supplied. The archived demo generates synthetic audio previews and includes mock track and licensing data. Player controls remain a future feature of the exported package.
 
 ## Enable in the CV app later
 
