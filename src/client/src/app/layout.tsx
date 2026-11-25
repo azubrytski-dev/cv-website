@@ -9,6 +9,12 @@ import Providers from './providers';
 export const metadata: Metadata = {
   title: 'Andrei Zubrytski | CV',
   description: 'Portfolio and CV website for Andrei Zubrytski',
+  icons: {
+    icon: '/favicon.svg',
+    shortcut: '/favicon.ico',
+    apple: '/logo192.png',
+  },
+  manifest: '/manifest.json',
 };
 
 export default function RootLayout({

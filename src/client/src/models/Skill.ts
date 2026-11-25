@@ -134,14 +134,19 @@ export const skillCategoriesDataMock: SkillCategory[] = [
                 description: "Cloud services for application hosting, storage, messaging, and deployment workflows.",
             },
             {
-                key: "azure",
-                title: "Microsoft Azure",
-                description: "Cloud platform for enterprise services, application delivery, and managed resources.",
-            },
-            {
                 key: "azure-devops",
                 title: "Azure DevOps",
                 description: "Build and release workflows, work tracking, and CI/CD automation across teams.",
+            },
+            {
+                key: "azure-pipelines",
+                title: "Microsoft Azure Pipelines",
+                description: "Continuous integration and deployment workflows for Azure.",
+            },
+            {
+                key: "github-actions",
+                title: "GitHub Actions",
+                description: "Continuous integration and deployment workflows directly within GitHub.",
             },
         ],
     },
@@ -150,6 +155,26 @@ export const skillCategoriesDataMock: SkillCategory[] = [
         title: "AI & Automation",
         description: "LLM tooling, agent workflows, retrieval systems, and local model experimentation.",
         skills: [
+            {
+                key: "llm-integration",
+                title: "LLM Integrations (OpenAI API, Gemini API)",
+                description: "Hands-on integration with the OpenAI and Gemini APIs.",
+            },
+            {
+                key: "llm-usage-cost",
+                title: "Token & cost tracking",
+                description: "Measuring token usage and estimating LLM request costs.",
+            },
+            {
+                key: "agent-development",
+                title: "Agent development",
+                description: "Building agents that use tools and carry out multi-step tasks.",
+            },
+            {
+                key: "mcp",
+                title: "MCP basics",
+                description: "Foundations of the Model Context Protocol.",
+            },
             {
                 key: "bedrock",
                 title: "Amazon Bedrock",
@@ -169,6 +194,21 @@ export const skillCategoriesDataMock: SkillCategory[] = [
                 key: "claude-code",
                 title: "Claude Code",
                 description: "Agentic coding workflows for refactoring, implementation, and rapid iteration.",
+            },
+            {
+                key: "cloud-code",
+                title: "Cloud Code",
+                description: "Cloud development tooling.",
+            },
+            {
+                key: "codex",
+                title: "Codex",
+                description: "AI-assisted software development.",
+            },
+            {
+                key: "superpower",
+                title: "Superpower",
+                description: "Tooling for AI-assisted development workflows.",
             },
             {
                 key: "cursor",

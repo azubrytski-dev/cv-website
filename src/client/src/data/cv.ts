@@ -4,12 +4,15 @@ import { skillCategoriesDataMock } from '../models/Skill';
 
 const skillTitles = new Map(skillCategoriesDataMock.flatMap(category => category.skills.map(skill => [skill.key, skill.title] as const)));
 const groups = [
+  {
+    title: 'AI Engineering & Automation',
+    keys: ['llm-integration', 'bedrock', 'rag', 'llm-usage-cost', 'agent-development', 'agents', 'mcp', 'spec-driven-development', 'ai-code-review'],
+  },
   { title: 'Backend', keys: ['csharp', 'dotnet', 'aspnet-core', 'restsoap', 'entity-framework', 'dapper'] },
   { title: 'Data & messaging', keys: ['mssql', 'mongodb', 'rabbitmq', 'postgresql', 'redis', 'couchdb'] },
   { title: 'Frontend', keys: ['react', 'typescript', 'javascript', 'nextjs', 'vuejs'] },
-  { title: 'Cloud & delivery', keys: ['aws', 'azure', 'azure-devops'] },
-  { title: 'AI & automation', keys: ['bedrock', 'agents', 'spec-driven-development', 'ai-code-review'] },
-  { title: 'Additional tools', keys: ['python', 'rag', 'ollama', 'claude-code', 'cursor'], note: 'Ongoing exploration' },
+  { title: 'Cloud & delivery', keys: ['aws', 'azure-devops', 'azure-pipelines', 'github-actions'] },
+  { title: 'Additional tools', keys: ['claude-code', 'cloud-code', 'codex', 'cursor', 'openspec', 'superpower', 'ollama'], note: 'Ongoing exploration' },
 ];
 const shortNames: Record<string, string> = { mssql: 'SQL Server', aws: 'AWS', azure: 'Azure', agents: 'Agent workflows' };
 

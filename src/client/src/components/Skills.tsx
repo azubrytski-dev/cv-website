@@ -12,9 +12,20 @@ export default function Skills() {
         {cvData.skills.map(group => (
           <Box key={group.title} sx={{ display: 'grid', gridTemplateColumns: { xs: '1fr', sm: '12rem 1fr' }, gap: { xs: 0.75, sm: 3 }, py: 2, borderBottom: '1px solid', borderColor: 'divider' }}>
             <Box component="dt">
-              <Typography component="span" sx={{ display: 'inline-flex', alignItems: 'center', gap: 1, fontWeight: 600 }}>
-                {group.title === 'AI & automation' && <Image src="/ai-product-icon.png" alt="" width={24} height={24} />}
+              <Typography component="span" sx={{ fontWeight: 600 }}>
                 {group.title}
+                {group.title === 'AI Engineering & Automation' && (
+                  <>
+                    {'\u00a0\u2060'}
+                    <Image
+                      src="/ai-product-icon.png"
+                      alt=""
+                      width={24}
+                      height={24}
+                      style={{ width: '1em', height: '1em', verticalAlign: 'middle' }}
+                    />
+                  </>
+                )}
               </Typography>
               {group.note && <Typography variant="caption" color="text.secondary" sx={{ display: 'block' }}>{group.note}</Typography>}
             </Box>
