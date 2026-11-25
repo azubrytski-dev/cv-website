@@ -151,6 +151,21 @@ export const skillCategoriesDataMock: SkillCategory[] = [
         description: "LLM tooling, agent workflows, retrieval systems, and local model experimentation.",
         skills: [
             {
+                key: "bedrock",
+                title: "Amazon Bedrock",
+                description: "Integration of a Bedrock agent into a customer-facing chatbot.",
+            },
+            {
+                key: "spec-driven-development",
+                title: "Spec-driven development",
+                description: "Using specifications to guide AI-assisted implementation.",
+            },
+            {
+                key: "ai-code-review",
+                title: "AI-assisted code review",
+                description: "Configuring AI agents to support code review.",
+            },
+            {
                 key: "claude-code",
                 title: "Claude Code",
                 description: "Agentic coding workflows for refactoring, implementation, and rapid iteration.",

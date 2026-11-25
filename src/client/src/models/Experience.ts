@@ -13,13 +13,14 @@
             company: "Tipalti",
             role: "Senior Software Engineer",
             startDate: "August 2024",
-            endDate: "Present",
-            description: "Built FinTech features with a team of 10 engineers, shaping architecture and design while keeping delivery predictable under real product constraints.",
-            techStack: ".NET Core, React, MongoDB, RabbitMQ, MSSQL, AWS",
+            endDate: "18 November 2026",
+            description: "Fintech and AI product development in a 10-person team.",
+            techStack: ".NET, React, AWS (Amazon Bedrock), Azure Pipelines, RabbitMQ, MongoDB, PostgreSQL, Snowflake, SQL Server",
             responsibilities: [
-                "Took ownership of architecture decisions that kept the platform scalable and maintainable",
-                "Delivered backend and frontend changes end to end inside a 10-person engineering team",
-                "Balanced product speed with reliability in a regulated FinTech environment"
+                "Owned design and rollout of automated reconciliation for funds transfers.",
+                "Integrated an existing Bedrock agent into a customer-facing sales chatbot and shipped the MVP to production in one month.",
+                "Mentored engineers and introduced spec-driven development, agent workflows, and AI-assisted code review.",
+                "Helped launch a financial service and owned monitoring, incident response, and follow-up fixes."
             ]
         },
         {
@@ -27,12 +28,13 @@
             role: "Senior Software Engineer / Team Lead",
             startDate: "October 2021",
             endDate: "April 2024",
-            description: "Led a healthcare engineering team of 10, translating messy business needs into stable product delivery and clean technical direction.",
+            description: "Progressed from senior engineer to lead of a 10-person healthcare software team.",
             techStack: ".NET Core, React, CouchDB, RabbitMQ, MSSQL, AWS",
             responsibilities: [
-                "Led a 10-person team through planning, delivery, and code-quality decisions",
-                "Shaped system architecture so the product could evolve without slowing the team down",
-                "Kept stakeholders aligned by turning business requirements into clear implementation steps"
+                "Scoped, estimated, and designed a medical records system, then led it through launch and initial use.",
+                "Extended eligibility and benefits checks to support new insurance coverage rules.",
+                "Owned design and production deployments, and resolved urgent incidents with low-risk fixes.",
+                "Conducted technical interviews and helped make hiring decisions."
             ]
         },
         {
@@ -40,12 +42,12 @@
             role: "System Architect",
             startDate: "April 2020",
             endDate: "October 2021",
-            description: "Focused on system design and non-functional requirements, helping teams ship software that was fast, resilient, and easier to grow.",
-            techStack: "REST/SOAP, .NET, MS SQL, Azure DevOps",
+            description: "Enterprise integration design and architecture guidance.",
+            techStack: "REST/SOAP, .NET, SQL Server, Azure DevOps",
             responsibilities: [
-                "Improved performance and scalability by designing around non-functional requirements early",
-                "Guided multiple teams on architecture, technical tradeoffs, and delivery sequencing",
-                "Mentored developers and raised the quality bar through practical coaching"
+                "Reduced factory data sync delays in an automotive quality-control system with caching and batch writes, keeping the system usable during sync.",
+                "Defined the architectural runway for products and iterations, advised teams, and reviewed implementation.",
+                "Mentored developers on performance and scalability."
             ]
         },
         {
@@ -53,12 +55,12 @@
             role: "Senior Software Engineer (.NET)",
             startDate: "April 2019",
             endDate: "April 2020",
-            description: "Customized platform capabilities and integrated external services so the product could fit complex customer workflows.",
-            techStack: "REST/SOAP, .NET, MS SQL, Azure DevOps",
+            description: "Customized an enterprise platform for customer workflows.",
+            techStack: "REST/SOAP, .NET, SQL Server, Azure DevOps, LDAP",
             responsibilities: [
-                "Delivered custom product behavior for client-specific business needs",
-                "Integrated third-party services into existing systems without disrupting the core platform",
-                "Worked across code, integration, and troubleshooting layers to keep releases moving"
+                "Implemented custom LDAP sign-in using customers’ existing directory credentials.",
+                "Delivered agreed customer changes on schedule.",
+                "Helped teammates design and troubleshoot changes."
             ]
         },
         {
@@ -66,12 +68,11 @@
             role: ".NET Developer/Team Lead",
             startDate: "February 2019",
             endDate: "April 2019",
-            description: "Built an MVP chatbot for bank employee onboarding, moving quickly from idea to something real enough for users to start learning from.",
+            description: "Bank employee onboarding.",
             techStack: "C#, ASP.NET Core, Azure",
             responsibilities: [
-                "Turned a short concept cycle into a working onboarding MVP",
-                "Led a small team while keeping scope tight and delivery fast",
-                "Used rapid iteration to validate the product direction early"
+                "Delivered a demo-ready MVP of a scripted chatbot for bank employee onboarding.",
+                "Led a small team and defined MVP scope."
             ]
         },
         {
@@ -79,12 +80,12 @@
             role: ".NET Developer/Team Lead",
             startDate: "June 2017",
             endDate: "April 2019",
-            description: "Built E-Commerce platform services and led migrations, giving the team a steadier base for growth and future changes.",
-            techStack: "C#, ASP.NET MVC, React, Dapper",
+            description: "E-commerce platform development and team leadership.",
+            techStack: "C#, ASP.NET MVC, React, OData, Dapper, Redis",
             responsibilities: [
-                "Delivered services for a high-traffic E-Commerce platform",
-                "Planned and executed migrations with minimal disruption to the product",
-                "Worked cross-functionally to keep delivery aligned across teams"
+                "Migrated all customers from OData to Dapper and verified behavior with regression tests.",
+                "Sped up initial loads for large product catalogs with database indexes and Redis caching.",
+                "Led developers and testers, interviewed candidates, and mentored new hires through probation."
             ]
         },
         {
@@ -92,12 +93,11 @@
             role: "Junior .NET Developer",
             startDate: "December 2016",
             endDate: "June 2017",
-            description: "Started on a vehicle insurance system where I built fundamentals, learned delivery discipline, and contributed to production features.",
+            description: "Vehicle insurance web application.",
             techStack: "C#, ASP.NET MVC, JavaScript",
             responsibilities: [
-                "Delivered features for a production insurance system",
-                "Learned to work inside an experienced team and absorb implementation standards quickly",
-                "Built a strong foundation in shipping reliable backend work"
+                "Added Arabic localization with right-to-left text and interface layouts.",
+                "Diagnosed and fixed application bugs."
             ]
         }
     ];

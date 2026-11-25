@@ -26,13 +26,13 @@ function parseDateValue(value: string): Date | null {
         return new Date(Date.UTC(Number(year), Number(month) - 1, Number(day)));
     }
 
-    const monthYearMatch = normalized.match(/^([a-z]+)\s+(\d{4})$/);
+    const monthYearMatch = normalized.match(/^(?:(\d{1,2})\s+)?([a-z]+)\s+(\d{4})$/);
     if (monthYearMatch) {
-        const [, monthName, year] = monthYearMatch;
+        const [, day = '1', monthName, year] = monthYearMatch;
         const monthIndex = MONTHS[monthName];
 
         if (monthIndex !== undefined) {
-            return new Date(Date.UTC(Number(year), monthIndex, 1));
+            return new Date(Date.UTC(Number(year), monthIndex, Number(day)));
         }
     }
 
