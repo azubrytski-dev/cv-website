@@ -18,7 +18,7 @@ export const educationDataMock: Education[] = [
     },
     {
         institution: "Belarusian National Technical University (BNTU)",
-        degree: "Bachelor's and Master's in Engineering",
+        degree: "Bachelor's in Engineering",
         specialization: "Hydraulic Engineering and Scientific Research",
         graduatedYear: 2014,
         description: "BNTU is a major technical university in Belarus offering a wide range of engineering disciplines. It is known for its applied research and collaboration with industrial partners.",

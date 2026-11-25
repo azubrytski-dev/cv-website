@@ -20,9 +20,11 @@ export default function Header() {
           gridRow: 1,
           position: 'relative',
           overflow: 'hidden',
-          width: { xs: 240, sm: '100%' },
+          width: '100%',
           maxWidth: '100%',
-          aspectRatio: '4 / 5',
+          aspectRatio: { xs: '4 / 5', sm: 'auto' },
+          alignSelf: { xs: 'center', sm: 'stretch' },
+          minHeight: 0,
           justifySelf: 'center',
           borderRadius: { xs: '16px', md: '20px' },
           border: '1px solid',
@@ -32,7 +34,7 @@ export default function Header() {
             objectFit: 'cover',
             objectPosition: '54% 34%',
             // Keep the original photo intact; frame the head and shoulders in the card.
-            transform: 'scale(2.4)',
+            transform: { xs: 'scale(2.4)', sm: 'scale(2)' },
             transformOrigin: '54% 34%',
           },
         }}
@@ -42,7 +44,7 @@ export default function Header() {
           alt={`${contact.name} wearing a white shirt and round sunglasses`}
           fill
           priority
-          sizes="(max-width: 599px) 576px, (max-width: 899px) 480px, 850px"
+          sizes="(max-width: 599px) calc(240vw - 96px), (max-width: 899px) 480px, 850px"
         />
       </Box>
       <Box sx={{ minWidth: 0, gridColumn: 1, gridRow: { xs: 2, sm: 1 } }}>

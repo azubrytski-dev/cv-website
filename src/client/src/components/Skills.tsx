@@ -1,6 +1,7 @@
 'use client';
 
 import { Box, Typography } from '@mui/material';
+import Image from 'next/image';
 import { cvData } from '../data/cv';
 
 export default function Skills() {
@@ -11,7 +12,10 @@ export default function Skills() {
         {cvData.skills.map(group => (
           <Box key={group.title} sx={{ display: 'grid', gridTemplateColumns: { xs: '1fr', sm: '12rem 1fr' }, gap: { xs: 0.75, sm: 3 }, py: 2, borderBottom: '1px solid', borderColor: 'divider' }}>
             <Box component="dt">
-              <Typography component="span" sx={{ fontWeight: 600 }}>{group.title}</Typography>
+              <Typography component="span" sx={{ display: 'inline-flex', alignItems: 'center', gap: 1, fontWeight: 600 }}>
+                {group.title === 'AI & automation' && <Image src="/ai-product-icon.png" alt="" width={24} height={24} />}
+                {group.title}
+              </Typography>
               {group.note && <Typography variant="caption" color="text.secondary" sx={{ display: 'block' }}>{group.note}</Typography>}
             </Box>
             <Typography component="dd" sx={{ m: 0, color: 'text.secondary' }}>
