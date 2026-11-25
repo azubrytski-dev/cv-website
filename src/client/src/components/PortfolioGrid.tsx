@@ -8,7 +8,7 @@ import Education from './Education';
 
 export default function PortfolioGrid() {
   return (
-    <Box sx={{ display: 'grid', gap: { xs: 6, md: 9 }, pt: { xs: 5, md: 8 } }}>
+    <Box sx={{ display: 'grid', gap: 5, pt: { xs: 5, md: 8 } }}>
       <Header />
       <Experience />
       <Skills />

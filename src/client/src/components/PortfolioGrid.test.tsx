@@ -20,15 +20,16 @@ it('leads with the introduction and experience, followed by skills, education an
   expect(screen.getByRole('link', { name: 'Email me' })).toHaveAttribute('href', `mailto:${getContactInfodmation().email}`);
 });
 
-it('shows the current role and contributions before opening its details', () => {
+it('shows the latest role, end date, and contributions before opening its details', () => {
   render(<App />);
   const experience = screen.getByRole('region', { name: 'Professional Experience' });
   const roles = within(experience).getAllByRole('article');
-  const current = getExperienceInformation()[0];
+  const latest = getExperienceInformation()[0];
   expect(roles).toHaveLength(getExperienceInformation().length);
-  expect(within(roles[0]).getByText(current.company)).toBeInTheDocument();
-  expect(within(roles[0]).getByText('Current')).toBeInTheDocument();
-  for (const contribution of current.responsibilities.slice(0, 2)) {
+  expect(within(roles[0]).getByText(latest.company)).toBeInTheDocument();
+  expect(within(roles[0]).getByText(/18 November 2026/)).toBeInTheDocument();
+  expect(within(roles[0]).queryByText('Current')).not.toBeInTheDocument();
+  for (const contribution of latest.responsibilities.slice(0, 2)) {
     expect(within(roles[0]).getByText(contribution)).toBeInTheDocument();
   }
   expect(within(roles[0]).getByRole('button', { name: /^View role details:/ })).toHaveAttribute('aria-haspopup', 'dialog');

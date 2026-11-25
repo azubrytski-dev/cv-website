@@ -4,11 +4,15 @@ import { skillCategoriesDataMock } from '../models/Skill';
 
 const skillTitles = new Map(skillCategoriesDataMock.flatMap(category => category.skills.map(skill => [skill.key, skill.title] as const)));
 const groups = [
-  { title: 'Backend', keys: ['csharp', 'dotnet', 'aspnet-core', 'python', 'restsoap', 'entity-framework', 'dapper'] },
-  { title: 'Data & messaging', keys: ['mssql', 'postgresql', 'mongodb', 'redis', 'rabbitmq', 'couchdb'] },
-  { title: 'Frontend', keys: ['react', 'typescript', 'nextjs', 'vuejs', 'javascript'] },
-  { title: 'Cloud & delivery', keys: ['aws', 'azure', 'azure-devops'] },
-  { title: 'AI & automation', keys: ['agents', 'rag', 'ollama', 'claude-code', 'cursor'], note: 'Ongoing exploration' },
+  {
+    title: 'AI Engineering & Automation',
+    keys: ['llm-integration', 'bedrock', 'rag', 'llm-usage-cost', 'agent-development', 'agents', 'mcp', 'spec-driven-development', 'ai-code-review'],
+  },
+  { title: 'Backend', keys: ['csharp', 'dotnet', 'aspnet-core', 'restsoap', 'entity-framework', 'dapper'] },
+  { title: 'Data & messaging', keys: ['mssql', 'mongodb', 'rabbitmq', 'postgresql', 'redis', 'couchdb'] },
+  { title: 'Frontend', keys: ['react', 'typescript', 'javascript', 'nextjs', 'vuejs'] },
+  { title: 'Cloud & delivery', keys: ['aws', 'azure-devops', 'azure-pipelines', 'github-actions'] },
+  { title: 'Additional tools', keys: ['claude-code', 'cloud-code', 'codex', 'cursor', 'openspec', 'superpower', 'ollama'], note: 'Ongoing exploration' },
 ];
 const shortNames: Record<string, string> = { mssql: 'SQL Server', aws: 'AWS', azure: 'Azure', agents: 'Agent workflows' };
 
@@ -24,7 +28,7 @@ export const cvData = {
     github: 'https://github.com/azubrytski-dev',
     linkedin: 'https://www.linkedin.com/in/andrei-zubrytsky/',
   },
-  summary: 'I build backend-heavy products across fintech and enterprise systems. I take work from architecture and delivery planning through implementation and release, with a focus on reliable, maintainable software.',
+  summary: 'I build .NET services, integrations, and React features. My experience spans enterprise architecture, healthcare team leadership, and fintech product development.',
   skills: groups.map(group => ({
     title: group.title,
     note: group.note,

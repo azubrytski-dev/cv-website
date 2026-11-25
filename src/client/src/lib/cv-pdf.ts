@@ -98,7 +98,7 @@ export async function createCvPdf(options: PdfOptions = {}): Promise<Buffer> {
   text(cvData.summary);
   heading('Core technical skills');
   for (const group of cvData.skills) {
-    text(`${group.title}${group.note ? ' (exploration)' : ''}: ${group.items.join(', ')}`, 9.8);
+    text(`${group.title}${group.note ? ` (${group.note.toLowerCase()})` : ''}: ${group.items.join(', ')}`, 9.8);
     doc.y += 1;
   }
   heading('Professional experience', roleHeight(cvData.experience[0], 0));
